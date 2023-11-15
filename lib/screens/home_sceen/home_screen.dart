@@ -1,36 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
-import 'package:flutter_app_tasc/screens/home_sceen/components/expandable_grid_view.dart';
+import 'package:flutter_app_tasc/logic/models/models_nwes_hot.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/greed_of_hot_nwes.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/list_of_agency.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/my_list_view.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        const SizedBox(height: 60),
-        const NewsListWidget(),
-        Container(
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
-          child: const Text(
-            "News Agency",
-            style: AppStyleText.mainText,
-            textAlign: TextAlign.left,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: SizedBox(height: 60), // Отступ, возможно для статус-бара
           ),
-        ),
-        const TopChannelsWidget(),
-        // ExpandableGridView(
-        //   gridViewWidget: GridHotNews(), // Теперь вы передаете GridHotNews
-        //   expandedHeight: MediaQuery.of(context).size.height,
-        // ),
-        const Expanded(child: GridHotNews()),
-      ],
-    ));
+          SliverToBoxAdapter(
+            child: NewsListWidget(),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
+            sliver: SliverToBoxAdapter(
+              child: Text(
+                "News Agency",
+                style: AppStyleText.mainText,
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: const TopChannelsWidget(),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
+            sliver: SliverToBoxAdapter(
+              child: Text(
+                "Hot News",
+                style: AppStyleText.mainText,
+              ),
+            ),
+          ),
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10.0,
+              mainAxisSpacing: 10.0,
+              childAspectRatio: 1 / 1.5, // Измените это соотношение, если нужно
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                HotNewsModel news = HotNewsModel.staticNewsList[index];
+                return GridHotNewsItem(news: news);
+              },
+              childCount: HotNewsModel.staticNewsList.length,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
