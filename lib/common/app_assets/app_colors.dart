@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class AppClor {
-  static const background = Color.fromARGB(255, 128, 110, 163);
+  static const background = Color.fromARGB(255, 46, 44, 49);
 }
 
 class AppStyleText {
@@ -25,5 +25,16 @@ class AppStyleText {
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
     color: Colors.white,
+  );
+  static const comentGredText = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    color: AppClor.background,
+  );
+  static const titleGredText = TextStyle(
+    fontSize: 18.0,
+    fontWeight: FontWeight.bold,
+    color: AppClor.background,
+    overflow: TextOverflow.ellipsis,
   );
 }

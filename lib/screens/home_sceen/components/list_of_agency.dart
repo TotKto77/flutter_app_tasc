@@ -12,7 +12,7 @@ class TopChannelsWidget extends StatelessWidget {
         AgencyModel.staticAgencyList.sublist(0, 10);
 
     return SizedBox(
-      height: 180, // Высота контейнера, чтобы вместить изображения и текст
+      height: 150, // Высота контейнера, чтобы вместить изображения и текст
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: topAgencies.length + 1, // +1 для кнопки "More"
@@ -27,7 +27,7 @@ class TopChannelsWidget extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     backgroundImage: AssetImage(topAgencies[index].imageUrl),
-                    radius: 40,
+                    radius: 30,
                   ),
                   const SizedBox(height: 8),
                   Text(topAgencies[index].name, style: AppStyleText.titleText),
@@ -37,20 +37,18 @@ class TopChannelsWidget extends StatelessWidget {
               ),
             );
           } else {
-            return Expanded(
-              child: Container(
-                padding: EdgeInsets.only(right: 24),
-                alignment: Alignment.center,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_forward_rounded,
-                    color: Colors.white,
-                    size: 50,
-                  ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SuorceScreen()),
-                  ),
+            return Container(
+              padding: const EdgeInsets.only(right: 24),
+              alignment: Alignment.center,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.arrow_forward_rounded,
+                  color: Colors.white,
+                  size: 50,
+                ),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SuorceScreen()),
                 ),
               ),
             );

@@ -7,6 +7,7 @@ class _Images {
   const _Images();
   final String standardNwes = 'assets/images/bitmap/basic1.png';
   final String standardLogo = 'assets/images/bitmap/logo.png';
+  final String standardHot = 'assets/images/bitmap/hotnwes.png';
 }
 
 class _Svg {
