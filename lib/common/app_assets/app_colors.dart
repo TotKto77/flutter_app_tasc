@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 
 class AppClor {
   static const background = Color.fromARGB(255, 46, 44, 49);
+  static const radialGradient = RadialGradient(
+      center: Alignment.center, // Центр градиента
+      radius: 0.5, // Радиус градиента
+      colors: [
+        Color.fromARGB(255, 203, 229, 255), // Центральный цвет градиента
+        Color(0xff024e8e),
+      ]); // Краевой цвет градиента
 }
 
 class AppStyleText {

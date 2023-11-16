@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
 
-import 'package:flutter_app_tasc/common/widgets/navigator.dart';
+import 'package:flutter_app_tasc/screens/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,11 +29,7 @@ class MyApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
-      home: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: const MyBottomNavigation()),
+      home: SplashScreen(),
     );
   }
 }

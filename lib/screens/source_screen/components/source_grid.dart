@@ -31,9 +31,12 @@ class AgencyCard extends StatelessWidget {
             alignment: Alignment.center,
             child: Image.asset(agency.imageUrl),
           ), // Предполагается, что это путь к изображению
-          Text(
-            agency.name,
-            style: AppStyleText.titleAgencyGridText,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              agency.name,
+              style: AppStyleText.titleAgencyGridText,
+            ),
           ),
         ],
       ),
