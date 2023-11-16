@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/home_screen.dart';
-import 'package:flutter_app_tasc/screens/source_screen.dart';
+import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
@@ -27,7 +27,7 @@ class _MyBottomNavigatioState extends State<MyBottomNavigation> {
     return Scaffold(
       body: _widgetOptions[_selectedPage],
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
         ),
@@ -38,7 +38,7 @@ class _MyBottomNavigatioState extends State<MyBottomNavigation> {
             height: kBottomNavigationBarHeight,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(16),
                 topRight: Radius.circular(16),
               ),
@@ -59,7 +59,7 @@ class _MyBottomNavigatioState extends State<MyBottomNavigation> {
                 BottomNavigationBarItem(
                   icon: const SizedBox(
                     width: 24,
-                    child: Icon(Icons.home_filled),
+                    child: Icon(Icons.home_outlined),
                   ),
                   activeIcon: SizedBox(
                     width: 24,
@@ -73,7 +73,7 @@ class _MyBottomNavigatioState extends State<MyBottomNavigation> {
                 BottomNavigationBarItem(
                   icon: const SizedBox(
                     width: 24,
-                    child: Icon(Icons.grid_view_sharp),
+                    child: Icon(Icons.grid_view_outlined),
                   ),
                   activeIcon: SizedBox(
                     width: 24,

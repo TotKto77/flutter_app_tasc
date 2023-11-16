@@ -20,6 +20,7 @@ class AppStyleText {
     fontSize: 18.0,
     fontWeight: FontWeight.bold,
     color: Colors.white,
+    overflow: TextOverflow.ellipsis,
   );
   static const comentText = TextStyle(
     fontSize: 14.0,
@@ -35,6 +36,12 @@ class AppStyleText {
     fontSize: 18.0,
     fontWeight: FontWeight.bold,
     color: AppClor.background,
+    overflow: TextOverflow.ellipsis,
+  );
+  static const titleAgencyGridText = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
     overflow: TextOverflow.ellipsis,
   );
 }
