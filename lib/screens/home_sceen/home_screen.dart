@@ -13,14 +13,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(height: 60), // Отступ, возможно для статус-бара
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: NewsListWidget(),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
+          const SliverPadding(
+            padding: EdgeInsets.fromLTRB(24, 16, 25, 8),
             sliver: SliverToBoxAdapter(
               child: Text(
                 "News Agency",
@@ -28,11 +28,11 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: const TopChannelsWidget(),
+          const SliverToBoxAdapter(
+            child: TopChannelsWidget(),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
+          const SliverPadding(
+            padding: EdgeInsets.fromLTRB(24, 16, 25, 8),
             sliver: SliverToBoxAdapter(
               child: Text(
                 "Hot News",
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SliverGrid(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
