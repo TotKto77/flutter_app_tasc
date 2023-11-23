@@ -45,6 +45,33 @@ class AppStyleText {
     color: AppClor.background,
     overflow: TextOverflow.ellipsis,
   );
+  static const titleListTextDetails = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.bold,
+    color: AppClor.background,
+    overflow: TextOverflow.ellipsis,
+  );
+  static const titleFullArticle = TextStyle(
+    fontSize: 24.0,
+    fontWeight: FontWeight.bold,
+    color: AppClor.background,
+  );
+
+  static const dateFullArticle = TextStyle(
+    fontSize: 18.0,
+    fontWeight: FontWeight.w400,
+    color: AppClor.background,
+  );
+  static const contendArticle = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w400,
+    color: AppClor.background,
+  );
+  static const dateSList = TextStyle(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w400,
+    color: AppClor.background,
+  );
   static const titleAgencyGridText = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.bold,

@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: TopChannelsWidget(),
           ),
           const SliverPadding(

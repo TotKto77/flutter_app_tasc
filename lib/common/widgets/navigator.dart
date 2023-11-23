@@ -4,12 +4,13 @@ import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
+  static final GlobalKey<_MyBottomNavigationState> globalKey = GlobalKey();
 
   @override
-  State<MyBottomNavigation> createState() => _MyBottomNavigatioState();
+  State<MyBottomNavigation> createState() => _MyBottomNavigationState();
 }
 
-class _MyBottomNavigatioState extends State<MyBottomNavigation> {
+class _MyBottomNavigationState extends State<MyBottomNavigation> {
   int _selectedPage = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
@@ -25,6 +26,7 @@ class _MyBottomNavigatioState extends State<MyBottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: MyBottomNavigation.globalKey,
       body: _widgetOptions[_selectedPage],
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(

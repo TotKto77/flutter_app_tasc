@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/logic/models/models_nwes_agansi.dart';
-import 'package:flutter_app_tasc/screens/source_screen/agency_detail_screen.dart';
+import 'package:flutter_app_tasc/screens/source_screen/components/agency_detail_screen.dart';
 
 class AgencyCard extends StatelessWidget {
   final AgencyModel agency;
@@ -40,7 +40,7 @@ class AgencyCard extends StatelessWidget {
               width: 50,
               alignment: Alignment.center,
               child: Image.asset(agency.imageUrl),
-            ), // Предполагается, что это путь к изображению
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
