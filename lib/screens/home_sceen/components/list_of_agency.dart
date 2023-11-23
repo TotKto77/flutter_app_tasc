@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/widgets/navigator.dart';
 import 'package:flutter_app_tasc/logic/models/models_nwes_agansi.dart';
-import 'package:flutter_app_tasc/screens/source_screen/agency_detail_screen.dart';
+
+import 'package:flutter_app_tasc/screens/source_screen/components/agency_detail_screen.dart';
 
 class TopChannelsWidget extends StatelessWidget {
   const TopChannelsWidget({Key? key}) : super(key: key);
