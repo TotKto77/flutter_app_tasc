@@ -1,0 +1,10 @@
+{
+    "title": "Flutter Localization",
+    "@title": {
+        "description": "Title for app"
+    },
+    "agencyName": "News Agency",
+    "@agencyName": {
+        "description": "Agency name"
+    }
+}

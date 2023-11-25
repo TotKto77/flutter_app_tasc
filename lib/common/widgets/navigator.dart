@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/home_screen.dart';
+import 'package:flutter_app_tasc/screens/settings_screen/settings_screen.dart';
 import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
 
 class MyBottomNavigation extends StatefulWidget {
@@ -15,6 +16,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const SuorceScreen(),
+    const SettingSceen(),
   ];
   void onSelectPage(int index) {
     if (_selectedPage == index) return;
@@ -85,6 +87,20 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                     ),
                   ),
                   label: "Source",
+                ),
+                BottomNavigationBarItem(
+                  icon: const SizedBox(
+                    width: 24,
+                    child: Icon(Icons.settings_outlined),
+                  ),
+                  activeIcon: SizedBox(
+                    width: 24,
+                    child: Icon(
+                      Icons.settings,
+                      color: Colors.blue[300],
+                    ),
+                  ),
+                  label: "Setings",
                 ),
               ],
             ),

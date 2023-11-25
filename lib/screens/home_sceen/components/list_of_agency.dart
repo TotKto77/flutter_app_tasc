@@ -17,10 +17,8 @@ class TopChannelsWidget extends StatelessWidget {
       height: 150,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount:
-            topAgencies.length + 1, // Длина списка + 1 для кнопки "Вперед"
+        itemCount: topAgencies.length + 1,
         itemBuilder: (context, index) {
-          // Если индекс соответствует длине списка, место для кнопки
           if (index == topAgencies.length) {
             return Padding(
               padding:
