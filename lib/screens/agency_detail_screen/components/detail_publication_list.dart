@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/logic/models/publication_model.dart';
-import 'package:flutter_app_tasc/screens/source_screen/components/full_article.dart';
+import 'package:flutter_app_tasc/screens/agency_detail_screen/components/full_article.dart';
 
 class DetailPublicationSList extends StatelessWidget {
   const DetailPublicationSList({
@@ -48,7 +48,7 @@ class DetailPublicationSList extends StatelessWidget {
                               style: AppStyleText.titleListTextDetails,
                             ),
                             Container(
-                              padding: EdgeInsets.fromLTRB(0, 16, 0, 8),
+                              padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
                               alignment: Alignment.bottomLeft,
                               child: Text(
                                 'about ${DateTime.now().difference(publication.datePublished).inHours} hours ago',

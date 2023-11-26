@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/provider/language_provider.dart';
+import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/l10n/l10n.dart';
 import 'package:flutter_app_tasc/screens/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,8 +13,7 @@ Future<void> main() async {
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, // Прозрачная панель состояния
-      statusBarIconBrightness: Brightness.dark, // тёмные иконки
+      statusBarColor: Colors.transparent,
     ),
   );
 
@@ -26,13 +25,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => LanguageProvider(),
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => LanguageProvider()),
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ],
         builder: (context, child) {
+          final themeProvider = Provider.of<ThemeProvider>(context);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             localizationsDelegates: const [
-              AppLocalizations.delegate, // add this code
+              AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate
@@ -40,12 +43,9 @@ class MyApp extends StatelessWidget {
             supportedLocales: L10n.all,
             title: AppLocalizations.of(context)?.title ?? '',
             locale: Provider.of<LanguageProvider>(context).locale,
-            theme: ThemeData(
-              scaffoldBackgroundColor: AppClor.background,
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              primarySwatch: Colors.blue,
-            ),
+            themeMode: themeProvider.themeMode,
+            theme: themeProvider.lightTheme,
+            darkTheme: themeProvider.darkTheme,
             home: const SplashScreen(),
           );
         });

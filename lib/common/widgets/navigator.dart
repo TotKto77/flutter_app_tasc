@@ -16,7 +16,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const SuorceScreen(),
-    const SettingSceen(),
+    SettingsScreen(),
   ];
   void onSelectPage(int index) {
     if (_selectedPage == index) return;
@@ -51,7 +51,8 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                   color: Colors.black.withOpacity(0.5),
                   spreadRadius: 0,
                   blurRadius: 6,
-                  offset: Offset(0, 2), // Уменьшите offset, чтобы поднять тень
+                  offset: const Offset(
+                      0, 2), // Уменьшите offset, чтобы поднять тень
                 ),
               ],
             ),

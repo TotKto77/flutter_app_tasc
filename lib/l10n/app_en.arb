@@ -1,10 +1,20 @@
 {
-    "title": "Flutter Localization",
+    "title": "Localization",
     "@title": {
         "description": "Title for app"
     },
     "agencyName": "News Agency",
     "@agencyName": {
         "description": "Agency name"
+    },
+    "hot": "Hot News",
+    "@hot": {
+        "description": "Hot News"
+    },
+    
+    "themeMod": "Dark Mode",
+    "@themeMod": {
+        "description": "Hot News"
     }
+    
 }

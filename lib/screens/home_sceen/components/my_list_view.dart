@@ -7,11 +7,11 @@ class NewsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PageController _pageController = PageController(viewportFraction: 0.8);
+    PageController pageController = PageController(viewportFraction: 0.8);
     return SizedBox(
       height: 200,
       child: PageView.builder(
-        controller: _pageController,
+        controller: pageController,
         scrollDirection: Axis.horizontal,
         itemCount: NewsModel.staticNewsList.length,
         itemBuilder: (context, index) {

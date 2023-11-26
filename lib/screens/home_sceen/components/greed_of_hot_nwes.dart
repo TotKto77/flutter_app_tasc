@@ -1,16 +1,18 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/logic/models/models_nwes_hot.dart';
+import 'package:provider/provider.dart';
 
 class GridHotNewsItem extends StatelessWidget {
   final HotNewsModel news;
 
-  const GridHotNewsItem({super.key, required this.news});
+  GridHotNewsItem({super.key, required this.news});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Card(
       clipBehavior: Clip.antiAlias, // ???
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -32,20 +34,23 @@ class GridHotNewsItem extends StatelessWidget {
               children: <Widget>[
                 Text(
                   news.title,
-                  style: AppStyleText.titleGredText,
+                  style: themeBasedStyle(
+                      themeProvider, AppStyleText.titleGredText),
                   maxLines: 3,
                 ),
                 const CustomDividerWithDot(),
                 Text(
                   news.sourceWebsite,
-                  style: AppStyleText.comentGredText,
+                  style: themeBasedStyle(
+                      themeProvider, AppStyleText.comentGredText),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
                   news.publicationTime,
-                  style: AppStyleText.comentGredText,
+                  style: themeBasedStyle(
+                      themeProvider, AppStyleText.comentGredText),
                 ),
               ],
             ),

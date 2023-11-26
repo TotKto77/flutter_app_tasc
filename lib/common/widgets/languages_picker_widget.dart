@@ -30,25 +30,23 @@ class _LanguagePickerWidgetState extends State<LanguagePickerWidget> {
             String countryFlag = L10n.getFlag(locale.languageCode);
             return PopupMenuItem<String>(
                 value: locale.languageCode,
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        countryName,
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            color: (locale.languageCode ==
-                                    provider.locale.languageCode)
-                                ? Colors.blue
-                                : Colors.black),
-                      ),
-                      Text(
-                        countryFlag,
-                        style: const TextStyle(fontSize: 24.0),
-                      ),
-                    ],
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      countryName,
+                      style: TextStyle(
+                          fontSize: 16.0,
+                          color: (locale.languageCode ==
+                                  provider.locale.languageCode)
+                              ? Colors.blue
+                              : Colors.black),
+                    ),
+                    Text(
+                      countryFlag,
+                      style: const TextStyle(fontSize: 24.0),
+                    ),
+                  ],
                 ));
           }).toList();
         });

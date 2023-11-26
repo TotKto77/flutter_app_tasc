@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/logic/models/models_nwes_agansi.dart';
 import 'package:flutter_app_tasc/logic/models/publication_model.dart';
-import 'package:flutter_app_tasc/screens/source_screen/components/detail_publication_SList.dart';
+import 'package:flutter_app_tasc/screens/agency_detail_screen/components/detail_publication_list.dart';
 
 class AgencyDetailScreen extends StatelessWidget {
   final AgencyModel agency;
@@ -20,7 +20,6 @@ class AgencyDetailScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: AppClor.background,
             pinned: true,
             expandedHeight: 250.0,
             flexibleSpace: FlexibleSpaceBar(

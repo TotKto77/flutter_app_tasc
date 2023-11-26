@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/widgets/navigator.dart';
 import 'package:flutter_app_tasc/logic/models/models_nwes_agansi.dart';
 
-import 'package:flutter_app_tasc/screens/source_screen/components/agency_detail_screen.dart';
+import 'package:flutter_app_tasc/screens/agency_detail_screen/agency_detail_screen.dart';
+import 'package:provider/provider.dart';
 
 class TopChannelsWidget extends StatelessWidget {
   const TopChannelsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     final List<AgencyModel> topAgencies =
         AgencyModel.staticAgencyList.sublist(0, 10);
 
@@ -59,9 +63,13 @@ class TopChannelsWidget extends StatelessWidget {
                     radius: 30,
                   ),
                   const SizedBox(height: 8),
-                  Text(agency.name, style: AppStyleText.titleText),
+                  Text(agency.name,
+                      style: themeBasedStyle(
+                          themeProvider, AppStyleText.titleText)),
                   const SizedBox(height: 8),
-                  Text(agency.type, style: AppStyleText.comentText),
+                  Text(agency.type,
+                      style: themeBasedStyle(
+                          themeProvider, AppStyleText.comentText)),
                 ],
               ),
             ),
