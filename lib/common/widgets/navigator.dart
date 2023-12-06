@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/home_screen.dart';
 import 'package:flutter_app_tasc/screens/settings_screen/settings_screen.dart';
 import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
@@ -66,42 +68,39 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                     width: 24,
                     child: Icon(Icons.home_outlined),
                   ),
-                  activeIcon: SizedBox(
+                  activeIcon: const SizedBox(
                     width: 24,
                     child: Icon(
                       Icons.home_filled,
-                      color: Colors.blue[300],
                     ),
                   ),
-                  label: "Home",
+                  label: AppLocalizations.of(context)?.home ?? '',
                 ),
                 BottomNavigationBarItem(
                   icon: const SizedBox(
                     width: 24,
                     child: Icon(Icons.grid_view_outlined),
                   ),
-                  activeIcon: SizedBox(
+                  activeIcon: const SizedBox(
                     width: 24,
                     child: Icon(
                       Icons.grid_view_sharp,
-                      color: Colors.blue[300],
                     ),
                   ),
-                  label: "Source",
+                  label: AppLocalizations.of(context)?.source ?? '',
                 ),
                 BottomNavigationBarItem(
                   icon: const SizedBox(
                     width: 24,
                     child: Icon(Icons.settings_outlined),
                   ),
-                  activeIcon: SizedBox(
+                  activeIcon: const SizedBox(
                     width: 24,
                     child: Icon(
                       Icons.settings,
-                      color: Colors.blue[300],
                     ),
                   ),
-                  label: "Setings",
+                  label: AppLocalizations.of(context)?.settings ?? '',
                 ),
               ],
             ),

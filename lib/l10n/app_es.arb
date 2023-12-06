@@ -2,5 +2,8 @@
     "title": "Localización",
     "agencyName": "Agencia De Moticias",
     "hot": "Noticias De Ultima Hora",
-    "themeMod": "Modo oscuro"
+    "themeMod": "Modo oscuro",
+    "home": "Hogar",
+    "source": "Fuente",
+    "settings": "ajustes"
 }
