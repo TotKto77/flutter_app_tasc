@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
-import 'package:flutter_app_tasc/logic/models/models_nwes_firs.dart';
+
+import 'package:flutter_app_tasc/logic/models/top_headlines_response.dart';
 
 class NewsListWidget extends StatelessWidget {
-  const NewsListWidget({super.key});
+  const NewsListWidget({super.key, required this.articlesList});
+
+  final List<Article> articlesList;
 
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController(viewportFraction: 0.8);
+
     return SizedBox(
       height: 200,
       child: PageView.builder(
         controller: pageController,
         scrollDirection: Axis.horizontal,
-        itemCount: NewsModel.staticNewsList.length,
+        itemCount: articlesList.length,
         itemBuilder: (context, index) {
-          final news = NewsModel.staticNewsList[index];
+          final news = articlesList[index];
           return Container(
             width: MediaQuery.of(context).size.width * 0.7,
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -27,11 +31,14 @@ class NewsListWidget extends StatelessWidget {
               elevation: 4.0,
               child: Stack(
                 children: [
-                  Image.asset(
-                    news.imageUrl,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: double.infinity,
+                  // Image.network(
+                  //   news.urlToImage != null && news.urlToImage!.isNotEmpty
+                  //       ? news.urlToImage!
+                  //       : AppAssets.images.nullDataUrl,
+                  // ),
+
+                  Image.network(
+                    news.urlToImage ?? '',
                   ),
                   Positioned(
                     bottom: 0,
@@ -54,7 +61,7 @@ class NewsListWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            news.title,
+                            news.title ?? '',
                             style: AppStyleText.titleText,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -65,7 +72,7 @@ class NewsListWidget extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                news.source,
+                                news.source?.name ?? '',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   color: Colors.white,
@@ -75,7 +82,8 @@ class NewsListWidget extends StatelessWidget {
                                 flex: 1,
                               ),
                               Text(
-                                news.timeAgo,
+                                // intl package , DateFormat options
+                                news.publishedAt ?? '',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   color: Colors.white,

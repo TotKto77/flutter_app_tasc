@@ -3,11 +3,10 @@ import 'package:flutter_app_tasc/screens/home_sceen/home_screen.dart';
 import 'package:flutter_app_tasc/screens/settings_screen/settings_screen.dart';
 import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
-  static final GlobalKey<_MyBottomNavigationState> globalKey = GlobalKey();
+  // static final GlobalKey<_MyBottomNavigationState> globalKey = GlobalKey();
 
   @override
   State<MyBottomNavigation> createState() => _MyBottomNavigationState();
@@ -18,7 +17,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const SuorceScreen(),
-    SettingsScreen(),
+    const SettingsScreen(),
   ];
   void onSelectPage(int index) {
     if (_selectedPage == index) return;
@@ -30,7 +29,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: MyBottomNavigation.globalKey,
+      // key: MyBottomNavigation.globalKey,
       body: _widgetOptions[_selectedPage],
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(

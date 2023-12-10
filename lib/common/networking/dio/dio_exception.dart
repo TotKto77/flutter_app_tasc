@@ -1,52 +1,43 @@
 import 'package:dio/dio.dart';
 
-class DioException implements Exception {
-  late String errorMessage;
+class DioExceptions implements Exception {
+  late String message;
 
-  DioException.fromDioError(DioError dioError) {
+  DioExceptions.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.cancel:
-        errorMessage = "Request to the server was cancelled.";
-
+        message = "Request to API server was cancelled";
+        break;
       case DioExceptionType.connectionTimeout:
-        errorMessage = "Connection timed out.";
-
+        message = "Connection timeout with API server";
+        break;
       case DioExceptionType.receiveTimeout:
-        errorMessage = "Receiving timeout occurred.";
-
-      case DioExceptionType.sendTimeout:
-        errorMessage = "Request send timeout.";
-
+        message = "Receive timeout in connection with API server";
+        break;
       case DioExceptionType.badResponse:
-        errorMessage = _handleStatusCode(dioError.response?.statusCode);
-
-      case DioExceptionType.unknown:
-        if (dioError.message!.contains('SocketException')) {
-          errorMessage = 'No Internet.';
-        }
-        errorMessage = 'Unexpected error occurred.';
-
+        message = _handleError(
+          dioError.response?.statusCode,
+          dioError.response?.data,
+        );
+        break;
       default:
-        errorMessage = 'Something went wrong';
     }
   }
-  String _handleStatusCode(int? statusCode) {
-    switch (statusCode) {
-      case 400:
-        return 'Some random text for example';
-      case 401:
-        return 'Oops something went wrong!';
-      case 403:
-        return 'Oops something went wrong!';
-      case 404:
-        return 'Oops something went wrong!';
-      case 500:
-        return 'Oops something went wrong!';
-      default:
-        return 'Oops something went wrong!';
-    }
-  }
+}
 
-  @override
-  String toString() => errorMessage;
+String _handleError(int? statusCode, dynamic error) {
+  switch (statusCode) {
+    case 400:
+      return 'Bad request';
+    case 401:
+      return 'Unauthorized';
+    case 404:
+      return error['message'] as String;
+    case 429:
+      return 'Too many requests';
+    case 500:
+      return 'Unexpected Error';
+    default:
+      return 'Oops something went wrong';
+  }
 }

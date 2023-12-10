@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/provider/language_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
+import 'package:flutter_app_tasc/common/repo/home_page_repo.dart';
+import 'package:flutter_app_tasc/common/widgets/navigator.dart';
 import 'package:flutter_app_tasc/l10n/l10n.dart';
-import 'package:flutter_app_tasc/screens/splash_screen.dart';
+import 'package:flutter_app_tasc/screens/home_sceen/bloc/home_page_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +50,26 @@ class MyApp extends StatelessWidget {
             themeMode: themeProvider.themeMode,
             theme: themeProvider.lightTheme,
             darkTheme: themeProvider.darkTheme,
-            home: const SplashScreen(),
+            home: MultiRepositoryProvider(
+              providers: [
+                RepositoryProvider(create: (context) => DioClient()),
+                RepositoryProvider(
+                  create: (context) => HomePageRepo(
+                    dioClient: RepositoryProvider.of<DioClient>(context),
+                  ),
+                ),
+              ],
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => HomePageBloc(
+                      RepositoryProvider.of<HomePageRepo>(context),
+                    )..add(HomePageFetchTopHeadlines()),
+                  ),
+                ],
+                child: const MyBottomNavigation(),
+              ),
+            ),
           );
         });
   }

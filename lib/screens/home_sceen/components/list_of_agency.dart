@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
-import 'package:flutter_app_tasc/common/widgets/navigator.dart';
 import 'package:flutter_app_tasc/logic/models/models_nwes_agansi.dart';
 
 import 'package:flutter_app_tasc/screens/agency_detail_screen/agency_detail_screen.dart';
@@ -29,7 +28,7 @@ class TopChannelsWidget extends StatelessWidget {
                   const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16),
               child: GestureDetector(
                 onTap: () {
-                  MyBottomNavigation.globalKey.currentState?.onSelectPage(1);
+                  // MyBottomNavigation.globalKey.currentState?.onSelectPage(1);
                 },
                 child: const Center(
                   child: Icon(

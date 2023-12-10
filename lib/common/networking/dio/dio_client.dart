@@ -1,19 +1,44 @@
 import 'package:dio/dio.dart';
-
-import '../../constants/constants.dart';
+import 'package:flutter_app_tasc/common/networking/dio/constants.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioClient {
-  DioClient._();
-
-  static final instance = DioClient._();
-
-  final Dio _dio = Dio(
-    BaseOptions(
-        baseUrl: baseUrl,
-        connectTimeout: Duration(seconds: 60),
-        receiveTimeout: Duration(seconds: 60),
-        queryParameters: {
-          "apiKey": apiKey,
-        }),
+  final options = BaseOptions(
+    baseUrl: Endpoints.baseUrl,
+    connectTimeout: Endpoints.connectionTimeout,
+    receiveTimeout: Endpoints.receiveTimeout,
+    queryParameters: {'apiKey': ApiKey.apiKey},
   );
+
+  late final dio = Dio(options)
+    ..interceptors.addAll(
+      [
+        _BasicInterceptor(),
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          compact: false,
+        ),
+      ],
+    );
+}
+
+class _BasicInterceptor implements Interceptor {
+  @override
+  void onError(
+    DioException error,
+    ErrorInterceptorHandler handler,
+  ) {
+    handler.next(error);
+  }
+
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    handler.next(options);
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    handler.next(response);
+  }
 }
