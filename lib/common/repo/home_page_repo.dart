@@ -32,8 +32,8 @@ class HomePageRepo {
     String fromDate =
         "${threeDaysAgo.year}-${threeDaysAgo.month.toString().padLeft(2, '0')}-${threeDaysAgo.day.toString().padLeft(2, '0')}";
     try {
-      final response = await dioClient.dio
-          .get('everything?from=$fromDate&to=$toDate&sortBy=popularity');
+      final response = await dioClient.dio.get(
+          'everything?q=from=$fromDate&to=$toDate&sortBy=popularity&pageSize=20');
 
       final dataJson = response.data;
 

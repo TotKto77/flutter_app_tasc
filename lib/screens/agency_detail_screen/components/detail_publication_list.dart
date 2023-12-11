@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_tasc/common/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 
 import 'package:flutter_app_tasc/logic/models/publication_model.dart';
 import 'package:flutter_app_tasc/screens/agency_detail_screen/components/full_article.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_app_tasc/common/app_assets/app_assets.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 
 class HotNewsModel {
   final String assetImagePath;
