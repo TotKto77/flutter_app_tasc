@@ -9,10 +9,10 @@ final class HomePageLoading extends HomePageState {}
 
 final class HomePageLoadData extends HomePageState {
   final List<Article> articlesList;
-  final List<Article> hotnewsList;
+  final List<HotArticles>? hotnewsList;
 // final Liust,Sources> listspurces;
 
-  HomePageLoadData({required this.articlesList, required this.hotnewsList
+  HomePageLoadData({required this.articlesList, this.hotnewsList
       // sources
       });
 }

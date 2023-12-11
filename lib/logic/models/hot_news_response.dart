@@ -1,20 +1,20 @@
 class HotNewsResponse {
-  final List<Article>? hotnewsList;
+  final List<HotArticles>? articles;
 
   HotNewsResponse({
-    this.hotnewsList,
+    this.articles,
   });
 
   HotNewsResponse.fromJson(Map<String, dynamic> json)
-      : hotnewsList = (json['hotnewsList'] as List?)
-            ?.map((e) => Article.fromJson(e as Map<String, dynamic>))
+      : articles = (json['articles'] as List?)
+            ?.map((e) => HotArticles.fromJson(e as Map<String, dynamic>))
             .toList();
 
   Map<String, dynamic> toJson() =>
-      {'hotnewsList': hotnewsList?.map((e) => e.toJson()).toList()};
+      {'articles': articles?.map((e) => e.toJson()).toList()};
 }
 
-class Article {
+class HotArticles {
   final Source? source;
   final String? author;
   final String? title;
@@ -24,7 +24,7 @@ class Article {
   final String? publishedAt;
   final String? content;
 
-  Article({
+  HotArticles({
     this.source,
     this.author,
     this.title,
@@ -35,7 +35,7 @@ class Article {
     this.content,
   });
 
-  Article.fromJson(Map<String, dynamic> json)
+  HotArticles.fromJson(Map<String, dynamic> json)
       : source = (json['source'] as Map<String, dynamic>?) != null
             ? Source.fromJson(json['source'] as Map<String, dynamic>)
             : null,

@@ -42,10 +42,12 @@ class HomeScreen extends StatelessWidget {
               ],
               if (state is HomePageError)
                 //TODO add placeholder for error
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.red,
+                SliverToBoxAdapter(
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                  ),
                 ),
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
@@ -77,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                 const SliverToBoxAdapter(child: CircularProgressIndicator()),
               if (state is HomePageLoadData) ...[
                 GridHotNews(
-                  hotNewsList: state.hotnewsList,
+                  hotnewsList: state.hotnewsList,
                   themeProvider: themeProvider,
                 ),
 
@@ -85,10 +87,12 @@ class HomeScreen extends StatelessWidget {
               ],
               if (state is HomePageError)
                 //TODO add placeholder for error
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.red,
+                SliverToBoxAdapter(
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                  ),
                 ),
             ],
           );

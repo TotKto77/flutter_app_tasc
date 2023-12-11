@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/networking/dio/dio_exception.dart';
+import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
 import 'package:flutter_app_tasc/logic/models/top_headlines_response.dart';
 
 class HomePageRepo {
@@ -23,7 +24,7 @@ class HomePageRepo {
     }
   }
 
-  Future<TopHeadlinesResponse> getHotNews() async {
+  Future<HotNewsResponse> getHotNews() async {
     try {
       final response = await dioClient.dio.get('q=sortBy=popularitys');
 
@@ -31,7 +32,7 @@ class HomePageRepo {
 
       print('DataJson $dataJson');
 
-      return TopHeadlinesResponse.fromJson(response.data);
+      return HotNewsResponse.fromJson(response.data);
     } on DioException catch (e) {
       final errorMessage = DioExceptions.fromDioError(e).toString();
       throw errorMessage;
