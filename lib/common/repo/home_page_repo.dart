@@ -25,8 +25,15 @@ class HomePageRepo {
   }
 
   Future<HotNewsResponse> getHotNews() async {
+    DateTime now = DateTime.now();
+    DateTime threeDaysAgo = now.subtract(Duration(days: 3));
+    String toDate =
+        "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
+    String fromDate =
+        "${threeDaysAgo.year}-${threeDaysAgo.month.toString().padLeft(2, '0')}-${threeDaysAgo.day.toString().padLeft(2, '0')}";
     try {
-      final response = await dioClient.dio.get('q=sortBy=popularitys');
+      final response = await dioClient.dio
+          .get('everything?from=$fromDate&to=$toDate&sortBy=popularity');
 
       final dataJson = response.data;
 
