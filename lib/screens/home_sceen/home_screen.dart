@@ -27,7 +27,6 @@ class HomeScreen extends StatelessWidget {
           // TODO: implement listener
         },
         builder: (context, state) {
-          final isLoading = state is HomePageLoading;
           return CustomScrollView(
             slivers: <Widget>[
               const SliverToBoxAdapter(child: SizedBox(height: 60)),
@@ -68,6 +67,7 @@ class HomeScreen extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: NewsListWidget(
                     articlesList: state.articlesList,
+                    themeProvider: themeProvider,
                   ),
                 ),
                 SliverPadding(
@@ -81,8 +81,10 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SliverToBoxAdapter(
-                  child: TopChannelsWidget(),
+                SliverToBoxAdapter(
+                  child: TopChannelsWidget(
+                    sourcesList: state.sourcesList,
+                  ),
                 ),
 
                 SliverPadding(

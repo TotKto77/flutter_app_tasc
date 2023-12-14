@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/widgets/full_hot_article_sceen.dart';
+
 import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:intl/intl.dart';
 
 class GridHotNews extends StatelessWidget {
   final List<HotArticles>? hotnewsList;
@@ -29,48 +32,62 @@ class GridHotNews extends StatelessWidget {
         if (hotnewsList != null) {
           final HotArticles news = hotnewsList![index];
           // Остальной код по созданию карточки
-
-          return Card(
-            clipBehavior: Clip.antiAlias,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                AspectRatio(
-                  aspectRatio: 1.5,
-                  child: Image.network(
-                    news.urlToImage ?? '',
-                    fit: BoxFit.cover,
+          final String formattedDate = DateFormat('yyyy MM dd - kk:mm').format(
+            DateTime.parse(news.publishedAt ?? ''),
+          );
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FullHotArticle(
+                      newsArticle: news,
+                      themeProvider: themeProvider,
+                    ),
+                  ));
+            },
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  AspectRatio(
+                    aspectRatio: 1.5,
+                    child: Image.network(
+                      news.urlToImage ?? '',
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        news.title ?? '',
-                        style: themeBasedStyle(
-                            themeProvider, AppStyleText.titleGredText),
-                        maxLines: 3,
-                      ),
-                      const CustomDividerWithDot(),
-                      Text(
-                        news.source?.name ?? '',
-                        style: themeBasedStyle(
-                            themeProvider, AppStyleText.comentGredText),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        news.publishedAt ?? '',
-                        style: themeBasedStyle(
-                            themeProvider, AppStyleText.comentGredText),
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          news.title ?? '',
+                          style: themeBasedStyle(
+                              themeProvider, AppStyleText.titleGredText),
+                          maxLines: 3,
+                        ),
+                        const CustomDividerWithDot(),
+                        Text(
+                          news.source?.name ?? '',
+                          style: themeBasedStyle(
+                              themeProvider, AppStyleText.comentGredText),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          formattedDate,
+                          style: themeBasedStyle(
+                              themeProvider, AppStyleText.comentGredText),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         } else {

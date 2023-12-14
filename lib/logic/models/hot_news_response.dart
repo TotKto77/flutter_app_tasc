@@ -1,3 +1,5 @@
+import 'package:flutter_app_tasc/logic/models/source.dart';
+
 class HotNewsResponse {
   final List<HotArticles>? articles;
 
@@ -15,6 +17,8 @@ class HotNewsResponse {
 }
 
 class HotArticles {
+  final dynamic id;
+  final String? name;
   final Source? source;
   final String? author;
   final String? title;
@@ -25,6 +29,8 @@ class HotArticles {
   final String? content;
 
   HotArticles({
+    this.id,
+    this.name,
     this.source,
     this.author,
     this.title,
@@ -34,43 +40,34 @@ class HotArticles {
     this.publishedAt,
     this.content,
   });
+  factory HotArticles.fromJson(Map<String, dynamic> json) {
+    return HotArticles(
+      id: json['id'],
+      name: json['name'],
+      source: json['source'] != null ? Source.fromJson(json['source']) : null,
+      author: json['author'],
+      title: json['title'],
+      description: json['description'],
+      url: json['url'],
+      urlToImage: json['urlToImage'],
+      publishedAt: json['publishedAt'],
+      content: json['content'],
+    );
+  }
 
-  HotArticles.fromJson(Map<String, dynamic> json)
-      : source = (json['source'] as Map<String, dynamic>?) != null
-            ? Source.fromJson(json['source'] as Map<String, dynamic>)
-            : null,
-        author = json['author'] as String?,
-        title = json['title'] as String?,
-        description = json['description'] as String?,
-        url = json['url'] as String?,
-        urlToImage = json['urlToImage'] as String?,
-        publishedAt = json['publishedAt'] as String?,
-        content = json['content'];
-
-  Map<String, dynamic> toJson() => {
-        'source': source?.toJson(),
-        'author': author,
-        'title': title,
-        'description': description,
-        'url': url,
-        'urlToImage': urlToImage,
-        'publishedAt': publishedAt,
-        'content': content
-      };
-}
-
-class Source {
-  final dynamic id;
-  final String? name;
-
-  Source({
-    this.id,
-    this.name,
-  });
-
-  Source.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'] as String?;
-
-  Map<String, dynamic> toJson() => {'id': id, 'name': name};
+  // Преобразование объекта Article в JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'source': source?.toJson(),
+      'author': author,
+      'title': title,
+      'description': description,
+      'url': url,
+      'urlToImage': urlToImage,
+      'publishedAt': publishedAt,
+      'content': content,
+    };
+  }
 }

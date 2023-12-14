@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 
 import 'package:flutter_app_tasc/logic/models/publication_model.dart';
-import 'package:flutter_app_tasc/screens/agency_detail_screen/components/full_article.dart';
 
 class DetailPublicationSList extends StatelessWidget {
   const DetailPublicationSList({
@@ -19,18 +18,7 @@ class DetailPublicationSList extends StatelessWidget {
         (context, index) {
           Publication publication = filteredPublications[index];
           return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FullArticle(
-                    publication: filteredPublications[index],
-                    allPublications: filteredPublications,
-                    currentIndex: index,
-                  ),
-                ),
-              );
-            },
+            onTap: () {},
             child: Card(
               clipBehavior: Clip.antiAlias,
               color: Colors.white,
