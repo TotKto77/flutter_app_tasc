@@ -9,7 +9,7 @@ final class HomePageLoading extends HomePageState {}
 
 final class HomePageLoadData extends HomePageState {
   final List<Article> articlesList;
-  final List<HotArticles>? hotnewsList;
+  final List<Article>? hotnewsList;
   final List<Source>? sourcesList;
 
   HomePageLoadData({

@@ -16,7 +16,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   int _selectedPage = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
-    const SuorceScreen(),
+    const SourceScreen(),
     const SettingsScreen(),
   ];
   void onSelectPage(int index) {

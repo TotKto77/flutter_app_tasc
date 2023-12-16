@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/widgets/full_hot_article_sceen.dart';
-
-import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
+import 'package:flutter_app_tasc/logic/models/articles.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
 import 'package:intl/intl.dart';
 
 class GridHotNews extends StatelessWidget {
-  final List<HotArticles>? hotnewsList;
+  final List<Article>? hotnewsList;
   final ThemeProvider themeProvider;
 
   const GridHotNews({
@@ -30,7 +29,7 @@ class GridHotNews extends StatelessWidget {
       itemCount: itemCount,
       itemBuilder: (BuildContext context, int index) {
         if (hotnewsList != null) {
-          final HotArticles news = hotnewsList![index];
+          final Article news = hotnewsList![index];
           // Остальной код по созданию карточки
           final String formattedDate = DateFormat('yyyy MM dd - kk:mm').format(
             DateTime.parse(news.publishedAt ?? ''),

@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/networking/dio/dio_exception.dart';
+import 'package:flutter_app_tasc/logic/models/article_response.dart';
 import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
 import 'package:flutter_app_tasc/logic/models/source.dart';
+import 'package:flutter_app_tasc/logic/models/source_response.dart';
 import 'package:flutter_app_tasc/logic/models/top_headlines_response.dart';
 
 class HomePageRepo {
@@ -64,11 +66,12 @@ class HomePageRepo {
     }
   }
 
-  Future<HotNewsResponse> getToArticleBySource(
+  Future<ArticlesResponse> getArticleBySourceId(
       {required String sourceId}) async {
     ///string ?
     try {
-      final response = await dioClient.dio.get('everything?source=$sourceId');
+      final response =
+          await dioClient.dio.get('top-headlines?sources=$sourceId');
 
       ///????
 
@@ -76,7 +79,7 @@ class HomePageRepo {
 
       print('DataJson $dataJson');
 
-      return HotNewsResponse.fromJson(response.data);
+      return ArticlesResponse.fromJson(response.data);
     } on DioException catch (e) {
       final errorMessage = DioExceptions.fromDioError(e).toString();
       throw errorMessage;

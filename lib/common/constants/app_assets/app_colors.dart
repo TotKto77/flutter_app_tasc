@@ -83,6 +83,16 @@ class AppStyleText {
   static const titleAgencyGridText = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.bold,
+    overflow: TextOverflow.ellipsis,
+  );
+  static const titListDetail = TextStyle(
+    fontSize: 18.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
+  static const tcontendListDetail = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.bold,
     color: Colors.white,
     overflow: TextOverflow.ellipsis,
   );

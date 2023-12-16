@@ -6,7 +6,9 @@ import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/repo/home_page_repo.dart';
 import 'package:flutter_app_tasc/common/widgets/navigator.dart';
 import 'package:flutter_app_tasc/l10n/l10n.dart';
+import 'package:flutter_app_tasc/screens/agency_detail_screen/bloc/agency_detailed_bloc.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/bloc/home_page_bloc.dart';
+import 'package:flutter_app_tasc/screens/source_screen/bloc/source_screen_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -66,6 +68,16 @@ class MyApp extends StatelessWidget {
                       RepositoryProvider.of<HomePageRepo>(context),
                     )..add(HomePageFetchTopHeadlines()),
                   ),
+                  BlocProvider(
+                    create: (context) => AgencyDetailedBloc(
+                      RepositoryProvider.of<HomePageRepo>(context),
+                    )..add(AgencyDetailedFetchData(sourceId: '')),
+                  ),
+                  BlocProvider(
+                    create: (context) => SourceScreenBloc(
+                      RepositoryProvider.of<HomePageRepo>(context),
+                    )..add(SourceScreenFetchData()),
+                  )
                 ],
                 child: const MyBottomNavigation(),
               ),

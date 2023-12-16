@@ -32,9 +32,13 @@ class DetailPublicationSList extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text(
-                              publication.title,
-                              style: AppStyleText.titleListTextDetails,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Text(
+                                publication.title,
+                                style: AppStyleText.titleListTextDetails,
+                                textAlign: TextAlign.left,
+                              ),
                             ),
                             Container(
                               padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),

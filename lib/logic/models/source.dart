@@ -1,26 +1,20 @@
-class SourceResponse {
-  final List<Source> sources;
-
-  SourceResponse(
-    this.sources,
-  );
-
-  SourceResponse.fromJson(Map<String, dynamic> json)
-      : sources =
-            (json["sources"] as List).map((i) => Source.fromJson(i)).toList();
-}
-
 class Source {
-  final String id;
-  final String name;
-  final String description;
-  final String url;
-  final String category;
-  final String country;
-  final String language;
+  final dynamic id;
+  final String? name;
+  final String? description;
+  final String? url;
+  final String? category;
+  final String? country;
+  final String? language;
 
-  Source(this.id, this.name, this.description, this.url, this.category,
-      this.country, this.language);
+  Source(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.url,
+      required this.category,
+      required this.country,
+      required this.language});
 
   Source.fromJson(Map<String, dynamic> json)
       : id = json["id"],
@@ -30,6 +24,4 @@ class Source {
         category = json["category"],
         country = json["country"],
         language = json["language"];
-
-  toJson() {}
 }

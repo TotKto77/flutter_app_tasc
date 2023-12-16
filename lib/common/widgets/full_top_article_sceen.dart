@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
+import 'package:flutter_app_tasc/logic/models/articles.dart';
+import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
 import 'package:flutter_app_tasc/logic/models/top_headlines_response.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
