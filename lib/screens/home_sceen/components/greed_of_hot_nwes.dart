@@ -1,10 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/widgets/full_hot_article_sceen.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
-import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 
 class GridHotNews extends StatelessWidget {
   final List<Article>? hotnewsList;
@@ -31,9 +32,8 @@ class GridHotNews extends StatelessWidget {
         if (hotnewsList != null) {
           final Article news = hotnewsList![index];
           // Остальной код по созданию карточки
-          final String formattedDate = DateFormat('yyyy MM dd - kk:mm').format(
-            DateTime.parse(news.publishedAt ?? ''),
-          );
+          String formattedDate =
+              formatDate(news.publishedAt, Localizations.localeOf(context));
           return GestureDetector(
             onTap: () {
               Navigator.push(
@@ -54,9 +54,15 @@ class GridHotNews extends StatelessWidget {
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 1.5,
-                    child: Image.network(
-                      news.urlToImage ?? '',
+                    child: CachedNetworkImage(
+                      imageUrl: news.urlToImage ?? '',
                       fit: BoxFit.cover,
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) => Image.asset(
+                        AppAssets.images.nullDataUrl,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Padding(

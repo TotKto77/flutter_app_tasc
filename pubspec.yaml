@@ -25,6 +25,7 @@ dependencies:
   flutter_bloc: ^7.1.0
   shimmer: ^3.0.0
   url_launcher: ^6.2.2
+  cached_network_image: ^3.3.0
   
 dev_dependencies:
   flutter_test:

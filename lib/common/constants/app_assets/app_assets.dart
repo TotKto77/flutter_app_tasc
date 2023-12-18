@@ -10,7 +10,7 @@ class _Images {
   final String standardHot = 'assets/images/bitmap/hotnwes.png';
   final String stamdardAppLogo = 'assets/images/bitmap/applogo.png';
   final String stamdardImageNwesList = 'assets/images/bitmap/standard.png';
-  final String nullDataUrl = 'assets/images/bitmap/url_null.png';
+  final String nullDataUrl = 'assets/images/bitmap/urll_null.png';
 }
 
 class _Svg {

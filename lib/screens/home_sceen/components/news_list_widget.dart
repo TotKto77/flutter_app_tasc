@@ -1,11 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/widgets/full_hot_article_sceen.dart';
 
 import 'package:flutter_app_tasc/logic/models/articles.dart';
-
-import 'package:intl/intl.dart';
 
 class NewsListWidget extends StatelessWidget {
   const NewsListWidget(
@@ -26,9 +27,8 @@ class NewsListWidget extends StatelessWidget {
         itemCount: articlesList.length,
         itemBuilder: (context, index) {
           final news = articlesList[index];
-          final String formattedDate = DateFormat('yyyy MM dd - kk:mm').format(
-            DateTime.parse(news.publishedAt ?? ''),
-          );
+          String formattedDate =
+              formatDate(news.publishedAt, Localizations.localeOf(context));
           return GestureDetector(
             onTap: () {
               Navigator.push(
@@ -51,15 +51,18 @@ class NewsListWidget extends StatelessWidget {
                 elevation: 4.0,
                 child: Stack(
                   children: [
-                    // Image.network(
-                    //   news.urlToImage != null && news.urlToImage!.isNotEmpty
-                    //       ? news.urlToImage!
-                    //       : AppAssets.images.nullDataUrl,
-                    // ),
-
-                    Image.network(
-                      news.urlToImage ?? '',
-                    ),
+                    Positioned.fill(
+                        child: CachedNetworkImage(
+                      imageUrl: news.urlToImage ??
+                          '', // Убедитесь, что это не пустая строка
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) =>
+                          Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) => Image.asset(
+                        AppAssets.images.nullDataUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    )),
                     Positioned(
                       bottom: 0,
                       left: 0,

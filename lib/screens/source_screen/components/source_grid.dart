@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
-import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/logic/models/source.dart';
 import 'package:flutter_app_tasc/screens/agency_detail_screen/agency_detail_screen.dart';
@@ -24,7 +24,7 @@ class AgencySliverGrid extends StatelessWidget {
     return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        crossAxisSpacing: 16,
+        crossAxisSpacing: 8,
         mainAxisSpacing: 16,
       ),
       delegate: SliverChildBuilderDelegate(

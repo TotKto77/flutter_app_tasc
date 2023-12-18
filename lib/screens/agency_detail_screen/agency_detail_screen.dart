@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
-import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/repo/home_page_repo.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_app_tasc/logic/models/source.dart';
 import 'package:flutter_app_tasc/screens/agency_detail_screen/bloc/agency_detailed_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AgencyDetailScreen extends StatelessWidget {
   // final List<Source>? sourcesList;
@@ -28,7 +29,6 @@ class AgencyDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Фильтрация публикаций
     final themeProvider = Provider.of<ThemeProvider>(context);
     return MultiRepositoryProvider(
       providers: [
@@ -53,20 +53,44 @@ class AgencyDetailScreen extends StatelessWidget {
                     pinned: true,
                     expandedHeight: 250.0,
                     flexibleSpace: FlexibleSpaceBar(
-                      background: Container(
-                          alignment: Alignment.bottomCenter,
-                          padding: const EdgeInsets.only(bottom: 75.0),
-                          width: 75,
-                          height: 75,
-                          child: CircleAvatar(
-                            radius: 75,
-                            backgroundImage:
-                                AssetImage(AppAssets.images.standardLogo),
-                            backgroundColor: Colors.transparent,
-                          )),
+                      background: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Container(
+                              alignment: Alignment.bottomCenter,
+                              padding: const EdgeInsets.only(bottom: 75.0),
+                              // width: 75,
+                              // height: 75,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: CircleAvatar(
+                                    radius: 75,
+                                    backgroundImage: AssetImage(
+                                        AppAssets.images.standardLogo),
+                                    backgroundColor: Colors.transparent),
+                              )),
+                          Positioned(
+                            bottom: 2,
+                            child: TextButton(
+                              onPressed: () async {
+                                final url = source.url;
+                                if (url != null && url.isNotEmpty) {
+                                  try {
+                                    launch(url);
+                                  } catch (e) {
+                                    print(e);
+                                  }
+                                }
+                              },
+                              child: Text(source.url ?? '',
+                                  style: AppStyleText.comentText),
+                            ),
+                          )
+                        ],
+                      ),
                       centerTitle: true,
                       title: Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         child: Text(source.name ?? '',
                             style: AppStyleText.mainText),
                       ),
@@ -129,8 +153,9 @@ class AgencyDetailScreen extends StatelessWidget {
                                               const EdgeInsets.only(left: 4),
                                           child: Image.network(
                                             article.urlToImage!,
+                                            width: 150,
                                             height: 150,
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fill,
                                           ),
                                         ),
                                       )

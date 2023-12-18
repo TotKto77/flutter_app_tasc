@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
-import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/bloc/home_page_bloc.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/greed_of_hot_nwes.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/list_of_agency.dart';
-import 'package:flutter_app_tasc/screens/home_sceen/components/my_list_view.dart';
+import 'package:flutter_app_tasc/screens/home_sceen/components/news_list_widget.dart';
 import 'package:flutter_app_tasc/common/widgets/alert_dialog.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/shimer_screen_home/shimer_agency.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/shimer_screen_home/shimer_grid_widget.dart';

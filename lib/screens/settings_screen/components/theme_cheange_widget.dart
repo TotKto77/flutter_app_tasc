@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
-import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 
 class ThemeCheangeWidget extends StatelessWidget {
