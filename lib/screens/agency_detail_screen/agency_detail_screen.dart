@@ -40,9 +40,10 @@ class AgencyDetailScreen extends StatelessWidget {
         ),
       ],
       child: BlocProvider<AgencyDetailedBloc>(
-        create: (context) => AgencyDetailedBloc(
-          RepositoryProvider.of<HomePageRepo>(context),
-        )..add(AgencyDetailedFetchData(sourceId: sourceId)),
+        create: (context) => AgencyDetailedBloc(context.read<HomePageRepo>()
+            // RepositoryProvider.of<HomePageRepo>(context),
+            )
+          ..add(AgencyDetailedFetchData(sourceId: sourceId)),
         child: BlocBuilder<AgencyDetailedBloc, AgencyDetailedState>(
           builder: (context, state) {
             return Scaffold(

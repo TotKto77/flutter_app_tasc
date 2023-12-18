@@ -47,7 +47,8 @@ class FullHotArticle extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(12)),
                   child: Image.network(
@@ -61,7 +62,7 @@ class FullHotArticle extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +89,7 @@ class FullHotArticle extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                     child: Text(
-                      truncateTextAtTripleDots(newsArticle.content ?? ''),
+                      removeText(newsArticle.content ?? '') ?? '',
                       style: themeBasedStyle(
                           themeProvider, AppStyleText.contendArticle),
                     ),
@@ -101,16 +102,22 @@ class FullHotArticle extends StatelessWidget {
                           final url = newsArticle.url;
 
                           if (url != null && url.isNotEmpty) {
-                            final Uri uri = Uri.parse(url);
-
-                            if (await canLaunchUrl(uri)) {
-                              await launchUrl(uri);
-                            } else {
-                              print('Could not launch $url');
+                            // final Uri uri = Uri.parse(url);
+                            // TODO fix later
+                            try {
+                              launch(url);
+                            } catch (e) {
+                              print(e);
                             }
+
+                            // if (await canLaunchUrl(uri)) {
+                            //   await launchUrl(uri);
+                            // } else {
+                            //   print('Could not launch $url');
+                            // }
                           }
                         },
-                        child: Text('Read more'),
+                        child: const Text('Read more'),
                       )),
                 ],
               ),

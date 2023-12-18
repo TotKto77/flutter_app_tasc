@@ -91,7 +91,7 @@ class GridHotNews extends StatelessWidget {
           );
         } else {
           // Возвращаем пустой контейнер, если список равен null
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         }
       },
     );

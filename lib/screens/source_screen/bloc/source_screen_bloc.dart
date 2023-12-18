@@ -20,7 +20,7 @@ class SourceScreenBloc extends Bloc<SourceScreenEvent, SourceScreenState> {
         emit(SourceScreenData(
           articlesList: articlesList.articles ?? [],
           hotnewsList: hotnewsList.articles ?? [],
-          sourcesList: sourcesList.sources ?? [],
+          sourcesList: sourcesList.sources,
         ));
       } catch (e) {
         print('error: $e');

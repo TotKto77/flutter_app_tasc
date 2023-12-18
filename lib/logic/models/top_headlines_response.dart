@@ -1,6 +1,4 @@
 import 'package:flutter_app_tasc/logic/models/articles.dart';
-import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
-import 'package:flutter_app_tasc/logic/models/source.dart';
 
 class TopHeadlinesResponse {
   final List<Article>? articles;

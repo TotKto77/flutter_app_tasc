@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_style_of_context.dart';
+import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/logic/models/source.dart';
 import 'package:flutter_app_tasc/screens/agency_detail_screen/agency_detail_screen.dart';
-import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
 
 import 'package:provider/provider.dart';
 
@@ -16,6 +16,8 @@ class TopChannelsWidget extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
+    var bottomNavigationBarProvider =
+        Provider.of<BottomNavigationBarProvider>(context, listen: false);
     var screenWidth = MediaQuery.of(context).size.width;
     var itemWidth = (screenWidth - (8 * 5)) / 4;
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -39,10 +41,7 @@ class TopChannelsWidget extends StatelessWidget {
                   size: 35,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SourceScreen()));
+                  bottomNavigationBarProvider.currentIndex = 1;
                 },
               ),
             );

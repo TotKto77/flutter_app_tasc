@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/home_screen.dart';
 import 'package:flutter_app_tasc/screens/settings_screen/settings_screen.dart';
 import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
@@ -28,9 +30,10 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<BottomNavigationBarProvider>(context);
     return Scaffold(
       // key: MyBottomNavigation.globalKey,
-      body: _widgetOptions[_selectedPage],
+      body: _widgetOptions[provider.currentIndex],
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
@@ -59,8 +62,10 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
             ),
             child: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
-              currentIndex: _selectedPage,
-              onTap: onSelectPage,
+              currentIndex: provider.currentIndex,
+              onTap: (index) {
+                provider.currentIndex = index;
+              },
               items: [
                 BottomNavigationBarItem(
                   icon: const SizedBox(

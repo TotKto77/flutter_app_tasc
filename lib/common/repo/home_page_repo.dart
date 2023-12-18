@@ -3,7 +3,7 @@ import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/networking/dio/dio_exception.dart';
 import 'package:flutter_app_tasc/logic/models/article_response.dart';
 import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
-import 'package:flutter_app_tasc/logic/models/source.dart';
+
 import 'package:flutter_app_tasc/logic/models/source_response.dart';
 import 'package:flutter_app_tasc/logic/models/top_headlines_response.dart';
 
@@ -29,7 +29,7 @@ class HomePageRepo {
 
   Future<HotNewsResponse> getHotNews() async {
     DateTime now = DateTime.now();
-    DateTime threeDaysAgo = now.subtract(Duration(days: 3));
+    DateTime threeDaysAgo = now.subtract(const Duration(days: 3));
     String toDate =
         "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
     String fromDate =

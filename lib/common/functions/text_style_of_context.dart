@@ -11,7 +11,9 @@ TextStyle themeBasedStyle(ThemeProvider themeProvider, TextStyle baseStyle) {
 
 // String truncateTextAtTripleDots(String text) {
 //   int indexOfTripleDots = text.indexOf('...');
-//   return indexOfTripleDots != -1 ? text.substring(0, indexOfTripleDots) : text;
+//   print(indexOfTripleDots);
+
+//   return text.substring(0, indexOfTripleDots);
 // }
 
 // String getTextBeforeTripleDots(String text) {
@@ -26,13 +28,22 @@ String getTextBeforeTripleDots(String text) {
   return text;
 }
 
-String truncateTextAtTripleDots(String text) {
-  RegExp exp =
-      RegExp(r"\.\.\.\s*"); // Ищем три точки и любое количество пробелов после
-  Match? match = exp.firstMatch(text);
-  if (match != null) {
-    int index = match.start;
-    return text.substring(0, index); // Возвращаем подстроку до трёх точек
+String? removeText(String? text) {
+  if (text != null && text.length >= 15) {
+    text = text.substring(0, text.length - 15);
   }
-  return text; // Если трёх точек нет, возвращаем весь текст
+
+  return '$text...';
 }
+
+extension on String {}
+
+// String truncateTextAtTripleDots(String text) {
+//   RegExp exp = RegExp(r"\.\.\.\s*"); // Ищем три точки и любое количество пробелов после
+//   Match? match = exp.firstMatch(text);
+//   if (match != null) {
+//     int index = match.start;
+//     return text.substring(0, index); // Возвращаем подстроку до трёх точек
+//   }
+//   return text; // Если трёх точек нет, возвращаем весь текст
+// }
