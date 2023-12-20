@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/home_screen.dart';
+import 'package:flutter_app_tasc/screens/search_screen/search_screen.dart';
 import 'package:flutter_app_tasc/screens/settings_screen/settings_screen.dart';
 import 'package:flutter_app_tasc/screens/source_screen/source_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,6 +20,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const SourceScreen(),
+    SearchScreen(),
     const SettingsScreen(),
   ];
   void onSelectPage(int index) {
@@ -92,7 +94,22 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                     ),
                   ),
                   label: AppLocalizations.of(context)?.source ?? '',
+                ), //
+                //
+                BottomNavigationBarItem(
+                  icon: const SizedBox(
+                    width: 24,
+                    child: Icon(Icons.search),
+                  ),
+                  activeIcon: const SizedBox(
+                    width: 24,
+                    child: Icon(
+                      Icons.search,
+                    ),
+                  ),
+                  label: AppLocalizations.of(context)?.settings ?? '',
                 ),
+
                 BottomNavigationBarItem(
                   icon: const SizedBox(
                     width: 24,

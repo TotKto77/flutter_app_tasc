@@ -9,6 +9,7 @@ import 'package:flutter_app_tasc/common/widgets/navigator.dart';
 import 'package:flutter_app_tasc/l10n/l10n.dart';
 import 'package:flutter_app_tasc/screens/agency_detail_screen/bloc/agency_detailed_bloc.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/bloc/home_page_bloc.dart';
+import 'package:flutter_app_tasc/screens/search_screen/bloc/search_bloc.dart';
 import 'package:flutter_app_tasc/screens/source_screen/bloc/source_screen_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -79,7 +80,11 @@ class MyApp extends StatelessWidget {
                     create: (context) => SourceScreenBloc(
                       RepositoryProvider.of<HomePageRepo>(context),
                     )..add(SourceScreenFetchData()),
-                  )
+                  ),
+                  BlocProvider(
+                      create: (context) => SearchBloc(
+                            RepositoryProvider.of<HomePageRepo>(context),
+                          )),
                 ],
                 child: const MyBottomNavigation(),
               ),

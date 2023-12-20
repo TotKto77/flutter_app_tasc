@@ -53,8 +53,6 @@ class HomePageRepo {
     try {
       final response = await dioClient.dio.get('top-headlines/sources');
 
-      ///????
-
       final dataJson = response.data;
 
       print('DataJson $dataJson');
@@ -85,4 +83,29 @@ class HomePageRepo {
       throw errorMessage;
     }
   }
+
+  Future<HotNewsResponse> getArticleSearch(String query) async {
+    DateTime now = DateTime.now();
+    DateTime threeDaysAgo = now.subtract(const Duration(days: 3));
+    String toDate =
+        "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
+    String fromDate =
+        "${threeDaysAgo.year}-${threeDaysAgo.month.toString().padLeft(2, '0')}-${threeDaysAgo.day.toString().padLeft(2, '0')}";
+    String searchWords = "";
+    try {
+      final response = await dioClient.dio.get(
+          'everything?q=$searchWords&from=$fromDate&to=$toDate&sortBy=popularity&pageSize=20');
+
+      final dataJson = response.data;
+
+      print('DataJson $dataJson');
+
+      return HotNewsResponse.fromJson(response.data);
+    } on DioException catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      throw errorMessage;
+    }
+  }
+
+  searchArticles(String query) {}
 }

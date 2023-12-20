@@ -80,7 +80,7 @@ class TopChannelsWidget extends StatelessWidget {
                           style: themeBasedStyle(
                               themeProvider, AppStyleText.titleText)),
                       const SizedBox(height: 8),
-                      Text(agency.category ?? '',
+                      Text(capitalizeFirstLetter(agency.category ?? ''),
                           style: themeBasedStyle(
                               themeProvider, AppStyleText.comentText)),
                     ],

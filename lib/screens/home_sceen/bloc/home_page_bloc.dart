@@ -21,7 +21,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
         emit(HomePageLoadData(
           articlesList: articlesList.articles ?? [],
           hotnewsList: hotnewsList.articles ?? [],
-          sourcesList: sourcesList.sources ?? [],
+          sourcesList: sourcesList.sources,
         ));
       } catch (e) {
         print('error: $e');
