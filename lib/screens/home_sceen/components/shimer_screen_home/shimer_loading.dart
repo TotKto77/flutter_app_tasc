@@ -24,7 +24,6 @@ class ShimerLoading extends StatelessWidget {
           child: Text(
             AppLocalizations.of(context)?.agencyName ?? '',
             style: themeBasedStyle(themeProvider, AppStyleText.mainText),
-            //AppStyleText.mainText,
           ),
         ),
       ),

@@ -6,6 +6,7 @@ import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/logic/models/source.dart';
 import 'package:flutter_app_tasc/screens/agency_detail_screen/agency_detail_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AgencySliverGrid extends StatelessWidget {
   final List<Source>? sourcesList;
@@ -21,6 +22,20 @@ class AgencySliverGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
+    // Проверка на пустой список
+    if (sourcesList == null || sourcesList!.isEmpty) {
+      return SliverFillRemaining(
+        child: Center(
+          child: Text(
+            AppLocalizations.of(context)?.agenciesMatching ?? '',
+            style: themeProvider.isDarkMode
+                ? TextStyle(color: Colors.white)
+                : TextStyle(color: Colors.black),
+          ),
+        ),
+      );
+    }
+
     return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
@@ -29,27 +44,18 @@ class AgencySliverGrid extends StatelessWidget {
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          final agency = sourcesList?[index];
+          final agency = sourcesList![index];
           return GestureDetector(
             onTap: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AgencyDetailScreen(
-                      sourceId: agency?.id ?? '',
-                      source: agency ??
-                          Source(
-                            id: null,
-                            name: null,
-                            description: null,
-                            url: null,
-                            category: null,
-                            country: null,
-                            language: null,
-                          ),
-                      // sourcesList: [],
-                    ),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AgencyDetailScreen(
+                    sourceId: agency.id ?? '',
+                    source: agency,
+                  ),
+                ),
+              );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -78,7 +84,7 @@ class AgencySliverGrid extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
-                        agency?.name ?? '',
+                        agency.name ?? '',
                         style: themeBasedStyle(
                             themeProvider, AppStyleText.titleAgencyGridText),
                       ),
@@ -89,7 +95,7 @@ class AgencySliverGrid extends StatelessWidget {
             ),
           );
         },
-        childCount: sourcesList?.length,
+        childCount: sourcesList!.length,
       ),
     );
   }

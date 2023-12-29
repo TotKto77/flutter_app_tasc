@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_app_tasc/common/repo/home_page_repo.dart';
+import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
 import 'package:flutter_app_tasc/logic/models/source.dart';
 import 'package:meta/meta.dart';
@@ -30,5 +30,5 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     });
   }
 
-  final HomePageRepo repo;
+  final Repository repo;
 }

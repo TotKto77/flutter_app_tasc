@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ThemeCheangeWidget extends StatelessWidget {
   const ThemeCheangeWidget({
@@ -23,7 +24,7 @@ class ThemeCheangeWidget extends StatelessWidget {
           ),
           const SizedBox(width: 8.0), // Отступ между иконкой и текстом
           Text(
-            'Dark Mode',
+            AppLocalizations.of(context)?.darkMode ?? '',
             style: themeBasedStyle(themeProvider, AppStyleText.mainText),
           ),
         ],

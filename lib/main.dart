@@ -4,7 +4,7 @@ import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/language_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
-import 'package:flutter_app_tasc/common/repo/home_page_repo.dart';
+import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/common/widgets/navigator.dart';
 import 'package:flutter_app_tasc/l10n/l10n.dart';
 import 'package:flutter_app_tasc/screens/agency_detail_screen/bloc/agency_detailed_bloc.dart';
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
               providers: [
                 RepositoryProvider(create: (context) => DioClient()),
                 RepositoryProvider(
-                  create: (context) => HomePageRepo(
+                  create: (context) => Repository(
                     dioClient: RepositoryProvider.of<DioClient>(context),
                   ),
                 ),
@@ -68,22 +68,22 @@ class MyApp extends StatelessWidget {
                 providers: [
                   BlocProvider(
                     create: (context) => HomePageBloc(
-                      RepositoryProvider.of<HomePageRepo>(context),
+                      RepositoryProvider.of<Repository>(context),
                     )..add(HomePageFetchTopHeadlines()),
                   ),
                   BlocProvider(
                     create: (context) => AgencyDetailedBloc(
-                      RepositoryProvider.of<HomePageRepo>(context),
+                      RepositoryProvider.of<Repository>(context),
                     )..add(AgencyDetailedFetchData(sourceId: '')),
                   ),
                   BlocProvider(
                     create: (context) => SourceScreenBloc(
-                      RepositoryProvider.of<HomePageRepo>(context),
+                      RepositoryProvider.of<Repository>(context),
                     )..add(SourceScreenFetchData()),
                   ),
                   BlocProvider(
                       create: (context) => SearchBloc(
-                            RepositoryProvider.of<HomePageRepo>(context),
+                            RepositoryProvider.of<Repository>(context),
                           )),
                 ],
                 child: const MyBottomNavigation(),

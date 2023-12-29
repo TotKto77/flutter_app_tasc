@@ -18,5 +18,14 @@
     },
     "home": "Home",
     "source": "Source",
-    "settings": "Settings"
+    "search":"Search",
+    "settings": "Settings",
+    "reaDmore":"Read more",
+    "alert":"Something went wrong",
+    "retry":"Retry",
+    "errorloading":"Error loading search results",
+    "noresults":"No results",
+    "error":"Error",
+    "darkMode":"Dark Mode",
+    "agenciesMatching":"There are no agencies matching your request"
 }

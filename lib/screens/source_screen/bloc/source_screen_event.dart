@@ -1,6 +1,14 @@
 part of 'source_screen_bloc.dart';
 
 @immutable
-sealed class SourceScreenEvent {}
+abstract class SourceScreenEvent {}
 
-final class SourceScreenFetchData extends SourceScreenEvent {}
+class SourceScreenFetchData extends SourceScreenEvent {}
+
+class SourceScreenUpdateFilter extends SourceScreenEvent {
+  final String filterText;
+
+  SourceScreenUpdateFilter({required this.filterText});
+}
+
+class SourceScreenResetFilter extends SourceScreenEvent {}

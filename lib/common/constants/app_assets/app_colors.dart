@@ -87,7 +87,7 @@ class AppStyleText {
   );
   static const titListDetail = TextStyle(
     fontSize: 18.0,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w900,
     color: Colors.white,
   );
   static const tcontendListDetail = TextStyle(

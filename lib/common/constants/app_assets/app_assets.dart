@@ -11,6 +11,7 @@ class _Images {
   final String stamdardAppLogo = 'assets/images/bitmap/applogo.png';
   final String stamdardImageNwesList = 'assets/images/bitmap/standard.png';
   final String nullDataUrl = 'assets/images/bitmap/urll_null.png';
+  final String errorImagi = 'assets/images/bitmap/something_go_wrong.png';
 }
 
 class _Svg {

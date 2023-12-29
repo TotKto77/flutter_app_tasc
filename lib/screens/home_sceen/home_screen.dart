@@ -6,7 +6,7 @@ import 'package:flutter_app_tasc/screens/home_sceen/bloc/home_page_bloc.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/greed_of_hot_nwes.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/list_of_agency.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/news_list_widget.dart';
-import 'package:flutter_app_tasc/common/widgets/alert_dialog.dart';
+import 'package:flutter_app_tasc/screens/home_sceen/components/alert_dialog_home.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/shimer_screen_home/shimer_agency.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/shimer_screen_home/shimer_grid_widget.dart';
 import 'package:flutter_app_tasc/screens/home_sceen/components/shimer_screen_home/shimer_list_widget.dart';
@@ -107,7 +107,6 @@ class HomeScreen extends StatelessWidget {
                 // add here another widget that should be loaded with bloc
               ],
               if (state is HomePageError)
-                //TODO add placeholder for error
                 const SliverToBoxAdapter(child: AlertDialogConectionError()),
             ],
           );

@@ -5,5 +5,14 @@
     "themeMod": "Modo oscuro",
     "home": "Hogar",
     "source": "Fuente",
-    "settings": "ajustes"
+    "search":"Buscar",
+    "settings": "ajustes",
+    "reaDmore":"Leer más",
+    "alert":"Algo salió mal",
+    "retry":"Rever",
+    "errorloading":"Error al cargar los resultados de la búsqueda",
+    "noresults":"No hay resultados",
+    "error":"Error",
+    "darkMode":"Modo oscuro",
+    "agenciesMatching":"No hay agencias que coincidan con su solicitud"
 }

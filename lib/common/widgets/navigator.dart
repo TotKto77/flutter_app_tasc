@@ -20,7 +20,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const SourceScreen(),
-    SearchScreen(),
+    const SearchScreen(),
     const SettingsScreen(),
   ];
   void onSelectPage(int index) {
@@ -107,7 +107,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                       Icons.search,
                     ),
                   ),
-                  label: AppLocalizations.of(context)?.settings ?? '',
+                  label: AppLocalizations.of(context)?.search ?? '',
                 ),
 
                 BottomNavigationBarItem(

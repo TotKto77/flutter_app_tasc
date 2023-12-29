@@ -6,6 +6,7 @@ import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FullHotArticle extends StatelessWidget {
   final Article newsArticle;
@@ -129,7 +130,8 @@ class FullHotArticle extends StatelessWidget {
                   }
                 }
               },
-              child: const Text('Read more'),
+              child:
+                  Text(AppLocalizations.of(context)?.reaDmore ?? 'Read more'),
             ),
           ),
         ],

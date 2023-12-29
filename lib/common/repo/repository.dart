@@ -7,10 +7,10 @@ import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
 import 'package:flutter_app_tasc/logic/models/source_response.dart';
 import 'package:flutter_app_tasc/logic/models/top_headlines_response.dart';
 
-class HomePageRepo {
+class Repository {
   final DioClient dioClient;
 
-  HomePageRepo({required this.dioClient});
+  Repository({required this.dioClient});
 
   Future<TopHeadlinesResponse> getTopHeadLines() async {
     try {
@@ -91,10 +91,10 @@ class HomePageRepo {
         "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
     String fromDate =
         "${threeDaysAgo.year}-${threeDaysAgo.month.toString().padLeft(2, '0')}-${threeDaysAgo.day.toString().padLeft(2, '0')}";
-    String searchWords = "";
+
     try {
       final response = await dioClient.dio.get(
-          'everything?q=$searchWords&from=$fromDate&to=$toDate&sortBy=popularity&pageSize=20');
+          'everything?q=$query&from=$fromDate&to=$toDate&sortBy=popularity&pageSize=20');
 
       final dataJson = response.data;
 

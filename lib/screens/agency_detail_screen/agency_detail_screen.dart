@@ -4,7 +4,7 @@ import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
-import 'package:flutter_app_tasc/common/repo/home_page_repo.dart';
+import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/common/widgets/full_hot_article_sceen.dart';
 
 import 'package:flutter_app_tasc/logic/models/source.dart';
@@ -34,14 +34,14 @@ class AgencyDetailScreen extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (context) => DioClient()),
         RepositoryProvider(
-          create: (context) => HomePageRepo(
+          create: (context) => Repository(
             dioClient: RepositoryProvider.of<DioClient>(context),
           ),
         ),
       ],
       child: BlocProvider<AgencyDetailedBloc>(
-        create: (context) => AgencyDetailedBloc(context.read<HomePageRepo>()
-            // RepositoryProvider.of<HomePageRepo>(context),
+        create: (context) => AgencyDetailedBloc(context.read<Repository>()
+            // RepositoryProvider.of<Repository>(context),
             )
           ..add(AgencyDetailedFetchData(sourceId: sourceId)),
         child: BlocBuilder<AgencyDetailedBloc, AgencyDetailedState>(
