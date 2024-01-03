@@ -22,95 +22,91 @@ class HomeScreen extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
-      body: BlocConsumer<HomePageBloc, HomePageState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return CustomScrollView(
-            slivers: <Widget>[
-              const SliverToBoxAdapter(child: SizedBox(height: 60)),
-              if (state is HomePageLoading) ...[
-                const SliverToBoxAdapter(
-                  child: ShimerNewsListWidget(),
-                ),
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
-                  sliver: SliverToBoxAdapter(
-                    child: Text(
-                      AppLocalizations.of(context)?.agencyName ?? '',
-                      style:
-                          themeBasedStyle(themeProvider, AppStyleText.mainText),
-                      //AppStyleText.mainText,
+      body: SafeArea(
+        child: BlocConsumer<HomePageBloc, HomePageState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return CustomScrollView(
+              slivers: <Widget>[
+                //const SliverToBoxAdapter(child: SizedBox(height: 50)),
+                if (state is HomePageLoading) ...[
+                  const SliverToBoxAdapter(
+                    child: ShimerNewsListWidget(),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
+                    sliver: SliverToBoxAdapter(
+                      child: Text(
+                        AppLocalizations.of(context)?.agencyName ?? '',
+                        style: themeBasedStyle(
+                            themeProvider, AppStyleText.mainText),
+                      ),
                     ),
                   ),
-                ),
-                const SliverToBoxAdapter(
-                  child: ShimerTopChannelsWidget(),
-                ),
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(24, 16, 25, 25),
-                  sliver: SliverToBoxAdapter(
-                    child: Text(
-                      AppLocalizations.of(context)?.hot ?? '',
-                      style:
-                          themeBasedStyle(themeProvider, AppStyleText.mainText),
+                  const SliverToBoxAdapter(
+                    child: ShimerTopChannelsWidget(),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(24, 16, 25, 25),
+                    sliver: SliverToBoxAdapter(
+                      child: Text(
+                        AppLocalizations.of(context)?.hot ?? '',
+                        style: themeBasedStyle(
+                            themeProvider, AppStyleText.mainText),
+                      ),
                     ),
                   ),
-                ),
-                const SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  sliver: ShimerGridWidget(),
-                ),
+                  const SliverPadding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    sliver: ShimerGridWidget(),
+                  ),
+                ],
+                if (state is HomePageLoadData) ...[
+                  SliverToBoxAdapter(
+                    child: NewsListWidget(
+                      articlesList: state.articlesList,
+                      themeProvider: themeProvider,
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                    sliver: SliverToBoxAdapter(
+                      child: Text(
+                        AppLocalizations.of(context)?.agencyName ?? '',
+                        style: themeBasedStyle(
+                            themeProvider, AppStyleText.mainText),
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: TopChannelsWidget(
+                      sourcesList: state.sourcesList,
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                    sliver: SliverToBoxAdapter(
+                      child: Text(
+                        AppLocalizations.of(context)?.hot ?? '',
+                        style: themeBasedStyle(
+                            themeProvider, AppStyleText.mainText),
+                      ),
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    sliver: GridHotNews(
+                      hotnewsList: state.hotnewsList,
+                      themeProvider: themeProvider,
+                    ),
+                  ),
+                ],
+                if (state is HomePageError)
+                  const SliverToBoxAdapter(child: AlertDialogConectionError()),
               ],
-              if (state is HomePageLoadData) ...[
-                SliverToBoxAdapter(
-                  child: NewsListWidget(
-                    articlesList: state.articlesList,
-                    themeProvider: themeProvider,
-                  ),
-                ),
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(24, 16, 25, 8),
-                  sliver: SliverToBoxAdapter(
-                    child: Text(
-                      AppLocalizations.of(context)?.agencyName ?? '',
-                      style:
-                          themeBasedStyle(themeProvider, AppStyleText.mainText),
-                      //AppStyleText.mainText,
-                    ),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: TopChannelsWidget(
-                    sourcesList: state.sourcesList,
-                  ),
-                ),
-
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(24, 16, 25, 25),
-                  sliver: SliverToBoxAdapter(
-                    child: Text(
-                      AppLocalizations.of(context)?.hot ?? '',
-                      style:
-                          themeBasedStyle(themeProvider, AppStyleText.mainText),
-                    ),
-                  ),
-                ),
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  sliver: GridHotNews(
-                    hotnewsList: state.hotnewsList,
-                    themeProvider: themeProvider,
-                  ),
-                ),
-                // add here another widget that should be loaded with bloc
-              ],
-              if (state is HomePageError)
-                const SliverToBoxAdapter(child: AlertDialogConectionError()),
-            ],
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

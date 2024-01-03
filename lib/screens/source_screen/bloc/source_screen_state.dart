@@ -29,8 +29,8 @@ final class SourceScreenData extends SourceScreenState {
   }) {
     return SourceScreenData(
       filterText: filterText ?? this.filterText,
-      articlesList: this.articlesList,
-      hotnewsList: this.hotnewsList,
+      articlesList: articlesList,
+      hotnewsList: hotnewsList,
       sourcesList: sourcesList ?? this.sourcesList,
       isFilterApplied: isFilterApplied ?? this.isFilterApplied,
     );

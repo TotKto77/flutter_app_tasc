@@ -23,7 +23,7 @@ class SourceScreenBloc extends Bloc<SourceScreenEvent, SourceScreenState> {
         final hotnewsList = await repo.getHotNews();
         final sourcesList = await repo.getToSource();
         _allSources =
-            sourcesList.sources ?? []; // Сохранение полный список источников
+            sourcesList.sources; // Сохранение полный список источников
         yield SourceScreenData(
           filterText: "",
           articlesList: articlesList.articles ?? [],

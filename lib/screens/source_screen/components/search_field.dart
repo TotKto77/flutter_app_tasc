@@ -1,12 +1,17 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/source_screen/bloc/source_screen_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchField extends StatelessWidget {
   final ThemeProvider themeProvider;
-  const SearchField({super.key, required this.themeProvider});
+  final TextEditingController controller;
+  const SearchField(
+      {super.key, required this.themeProvider, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +20,24 @@ class SearchField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: TextField(
+        controller: controller,
         onChanged: (text) {
           debouncer.run(() {
             BlocProvider.of<SourceScreenBloc>(context)
                 .add(SourceScreenUpdateFilter(filterText: text));
           });
         },
+        style: TextStyle(
+          color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+          fontSize: 16,
+        ),
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.search,
             color: themeProvider.isDarkMode ? Colors.white : Colors.black,
           ),
-          hintText: 'Поиск...',
+          hintText: AppLocalizations.of(context)?.search ?? '',
+          hintStyle: themeBasedStyle(themeProvider, AppStyleText.comentText),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
           ),

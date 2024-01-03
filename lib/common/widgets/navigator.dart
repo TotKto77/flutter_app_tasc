@@ -34,13 +34,9 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   Widget build(BuildContext context) {
     var provider = Provider.of<BottomNavigationBarProvider>(context);
     return Scaffold(
-      // key: MyBottomNavigation.globalKey,
       body: _widgetOptions[provider.currentIndex],
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
-        ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
         child: BottomAppBar(
           color: Colors.transparent,
           elevation: 0,
@@ -107,7 +103,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                       Icons.search,
                     ),
                   ),
-                  label: AppLocalizations.of(context)?.search ?? '',
+                  label: AppLocalizations.of(context)?.searchButton ?? '',
                 ),
 
                 BottomNavigationBarItem(

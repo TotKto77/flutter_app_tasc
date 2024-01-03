@@ -57,7 +57,7 @@ class NewsListWidget extends StatelessWidget {
                           '', // Убедитесь, что это не пустая строка
                       fit: BoxFit.cover,
                       placeholder: (context, url) =>
-                          Center(child: CircularProgressIndicator()),
+                          const Center(child: CircularProgressIndicator()),
                       errorWidget: (context, url, error) => Image.asset(
                         AppAssets.images.nullDataUrl,
                         fit: BoxFit.cover,

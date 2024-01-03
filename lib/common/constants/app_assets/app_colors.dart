@@ -96,4 +96,12 @@ class AppStyleText {
     color: Colors.white,
     overflow: TextOverflow.ellipsis,
   );
+  static const linkStyle = TextStyle(
+    fontSize: 18.0,
+    fontWeight: FontWeight.w900,
+    color: Color.fromARGB(255, 1, 98, 176),
+    overflow: TextOverflow.ellipsis,
+    decoration: TextDecoration.underline,
+    decorationThickness: 2,
+  );
 }

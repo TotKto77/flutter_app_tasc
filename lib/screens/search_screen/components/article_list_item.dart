@@ -41,7 +41,7 @@ class SearchResultsList extends StatelessWidget {
       return SliverToBoxAdapter(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.only(top: 300),
+            padding: const EdgeInsets.only(top: 300),
             child: Text(
               AppLocalizations.of(context)?.noresults ?? '',
               style: themeBasedStyle(

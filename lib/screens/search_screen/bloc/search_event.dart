@@ -6,3 +6,5 @@ class SearchInitiated extends SearchEvent {
   final String query;
   SearchInitiated(this.query);
 }
+
+class SearchReset extends SearchEvent {}

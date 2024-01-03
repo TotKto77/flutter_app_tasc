@@ -14,11 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AgencyDetailScreen extends StatelessWidget {
-  // final List<Source>? sourcesList;
-
   const AgencyDetailScreen({
     super.key,
-    // required this.sourcesList,
     required this.sourceId,
     required this.source,
   });
@@ -40,9 +37,7 @@ class AgencyDetailScreen extends StatelessWidget {
         ),
       ],
       child: BlocProvider<AgencyDetailedBloc>(
-        create: (context) => AgencyDetailedBloc(context.read<Repository>()
-            // RepositoryProvider.of<Repository>(context),
-            )
+        create: (context) => AgencyDetailedBloc(context.read<Repository>())
           ..add(AgencyDetailedFetchData(sourceId: sourceId)),
         child: BlocBuilder<AgencyDetailedBloc, AgencyDetailedState>(
           builder: (context, state) {
@@ -59,8 +54,6 @@ class AgencyDetailScreen extends StatelessWidget {
                           Container(
                               alignment: Alignment.bottomCenter,
                               padding: const EdgeInsets.only(bottom: 75.0),
-                              // width: 75,
-                              // height: 75,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: CircleAvatar(
@@ -83,7 +76,7 @@ class AgencyDetailScreen extends StatelessWidget {
                                 }
                               },
                               child: Text(source.url ?? '',
-                                  style: AppStyleText.comentText),
+                                  style: AppStyleText.linkStyle),
                             ),
                           )
                         ],
@@ -96,7 +89,6 @@ class AgencyDetailScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  //DetailPublicationSList(filteredPublications: filteredPublications),
                   const SliverToBoxAdapter(
                     child: SizedBox(height: 10),
                   ),

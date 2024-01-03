@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchFieldSearchScreen extends StatelessWidget {
   final ThemeProvider themeProvider;
@@ -28,7 +29,8 @@ class SearchFieldSearchScreen extends StatelessWidget {
             Icons.search,
             color: themeProvider.isDarkMode ? Colors.white : Colors.black,
           ),
-          hintText: 'Поиск...',
+          hintText: AppLocalizations.of(context)?.search ?? '',
+          hintStyle: themeBasedStyle(themeProvider, AppStyleText.comentText),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
           ),

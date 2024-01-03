@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/source_screen/bloc/source_screen_bloc.dart';
 import 'package:flutter_app_tasc/screens/source_screen/components/alert_dialog_source.dart';
@@ -16,6 +17,37 @@ class SourceScreen extends StatefulWidget {
 }
 
 class _SourceScreenState extends State<SourceScreen> {
+  final TextEditingController _searchController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _resetFilterIfNeeded();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _resetFilterIfNeeded();
+  }
+
+  void _resetFilterIfNeeded() {
+    var provider =
+        Provider.of<BottomNavigationBarProvider>(context, listen: false);
+    if (provider.currentIndex == 1) {
+      if (_searchController.text.isEmpty) {
+        BlocProvider.of<SourceScreenBloc>(context, listen: false)
+            .add(SourceScreenResetFilter());
+      }
+    }
+  }
+
+// Очистка контроллера
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -27,7 +59,7 @@ class _SourceScreenState extends State<SourceScreen> {
             slivers: [
               if (state is SourceScreenLoading) ...[
                 const SliverPadding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                   sliver: SliverToBoxAdapter(child: SimeerTextfield()),
                 ),
                 const SliverPadding(
@@ -37,15 +69,20 @@ class _SourceScreenState extends State<SourceScreen> {
               ],
               if (state is SourceScreenData) ...[
                 SliverPadding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
-                  sliver: SliverToBoxAdapter(
-                    child: SearchField(
+                  padding: const EdgeInsetsDirectional.only(bottom: 16),
+                  sliver: SliverAppBar(
+                    backgroundColor: themeProvider.isDarkMode
+                        ? Color.fromARGB(255, 46, 44, 49)
+                        : Colors.white,
+                    pinned: true,
+                    title: SearchField(
                       themeProvider: themeProvider,
+                      controller: _searchController,
                     ),
                   ),
                 ),
                 SliverPadding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 24),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 24),
                   sliver: AgencySliverGrid(sourcesList: state.sourcesList),
                 ),
               ],
@@ -70,11 +107,12 @@ class _SourceScreenState extends State<SourceScreen> {
             onPressed: () {
               BlocProvider.of<SourceScreenBloc>(context)
                   .add(SourceScreenResetFilter());
+              _searchController.clear();
             },
             child: const Icon(Icons.restart_alt),
           );
         }
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       },
     );
   }

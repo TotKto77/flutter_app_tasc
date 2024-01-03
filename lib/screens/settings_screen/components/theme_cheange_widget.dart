@@ -22,7 +22,7 @@ class ThemeCheangeWidget extends StatelessWidget {
             themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode,
             color: themeProvider.isDarkMode ? Colors.white : Colors.black,
           ),
-          const SizedBox(width: 8.0), // Отступ между иконкой и текстом
+          const SizedBox(width: 8.0),
           Text(
             AppLocalizations.of(context)?.darkMode ?? '',
             style: themeBasedStyle(themeProvider, AppStyleText.mainText),

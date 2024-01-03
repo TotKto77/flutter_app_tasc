@@ -22,5 +22,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(SearchError(e.toString()));
       }
     });
+    on<SearchReset>((event, emit) {
+      emit(SearchInitial());
+    });
   }
 }

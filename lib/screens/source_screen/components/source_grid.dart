@@ -22,15 +22,14 @@ class AgencySliverGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    // Проверка на пустой список
     if (sourcesList == null || sourcesList!.isEmpty) {
       return SliverFillRemaining(
         child: Center(
           child: Text(
             AppLocalizations.of(context)?.agenciesMatching ?? '',
             style: themeProvider.isDarkMode
-                ? TextStyle(color: Colors.white)
-                : TextStyle(color: Colors.black),
+                ? const TextStyle(color: Colors.white)
+                : const TextStyle(color: Colors.black),
           ),
         ),
       );
