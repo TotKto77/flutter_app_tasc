@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/search_screen/bloc/search_bloc.dart';
@@ -51,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
             return CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  backgroundColor: Colors.transparent,
+                  backgroundColor: AppClor.background,
                   pinned: true,
                   title: SearchFieldSearchScreen(
                     onSearch: (query) {

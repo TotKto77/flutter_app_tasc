@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SliverPadding(
-                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                    padding: const EdgeInsets.fromLTRB(16, 32, 16, 8),
                     sliver: SliverToBoxAdapter(
                       child: Text(
                         AppLocalizations.of(context)?.agencyName ?? '',
