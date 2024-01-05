@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/language_provider.dart';
+import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/l10n/l10n.dart';
 
 import 'package:provider/provider.dart';
@@ -14,6 +17,7 @@ class LanguagePickerWidget extends StatefulWidget {
 class _LanguagePickerWidgetState extends State<LanguagePickerWidget> {
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     var provider = Provider.of<LanguageProvider>(context, listen: false);
     return PopupMenuButton<String>(
         initialValue: provider.locale.countryCode,
@@ -36,11 +40,14 @@ class _LanguagePickerWidgetState extends State<LanguagePickerWidget> {
                     Text(
                       countryName,
                       style: TextStyle(
-                          fontSize: 16.0,
-                          color: (locale.languageCode ==
-                                  provider.locale.languageCode)
-                              ? Colors.blue
-                              : Colors.black),
+                        fontSize: 16.0,
+                        color: (locale.languageCode ==
+                                provider.locale.languageCode)
+                            ? Colors.blue
+                            : themeBasedStyle(
+                                    themeProvider, AppStyleText.smolText)
+                                .color,
+                      ),
                     ),
                     Text(
                       countryFlag,

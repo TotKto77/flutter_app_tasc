@@ -27,12 +27,40 @@ dependencies:
   url_launcher: ^6.2.2
   cached_network_image: ^3.3.0
   
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
   json_serializable: ^6.7.1
   build_runner: ^2.4.7
+  flutter_launcher_icons: "^0.13.1"
+  flutter_native_splash: ^2.3.7
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/icons/splash_image.png"
+  android: true
+  ios: true
+
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icons/icon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/icons/icon.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/icons/icon.png" 
 
 flutter:
   uses-material-design: true
@@ -40,6 +68,6 @@ flutter:
   assets:
     - assets/images/svg/
     - assets/images/bitmap/
- 
-  
+    - assets/icons/
+
   

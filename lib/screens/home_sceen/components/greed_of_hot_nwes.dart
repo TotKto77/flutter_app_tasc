@@ -25,13 +25,13 @@ class GridHotNews extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 10.0,
         mainAxisSpacing: 10.0,
-        childAspectRatio: 1 / 1.5,
+        childAspectRatio: 1 / 1.7,
       ),
       itemCount: itemCount,
       itemBuilder: (BuildContext context, int index) {
         if (hotnewsList != null) {
           final Article news = hotnewsList![index];
-          // Остальной код по созданию карточки
+
           String formattedDate =
               formatDate(news.publishedAt, Localizations.localeOf(context));
           return GestureDetector(
@@ -53,7 +53,7 @@ class GridHotNews extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   AspectRatio(
-                    aspectRatio: 1.5,
+                    aspectRatio: 1.4,
                     child: CachedNetworkImage(
                       imageUrl: news.urlToImage ?? '',
                       fit: BoxFit.cover,
@@ -66,7 +66,8 @@ class GridHotNews extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -96,7 +97,6 @@ class GridHotNews extends StatelessWidget {
             ),
           );
         } else {
-          // Возвращаем пустой контейнер, если список равен null
           return const SizedBox.shrink();
         }
       },
@@ -110,7 +110,7 @@ class CustomDividerWithDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         children: [
           const Expanded(

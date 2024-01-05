@@ -15,5 +15,6 @@
     "noresults":"No hay resultados",
     "error":"Error",
     "darkMode":"Modo oscuro",
-    "agenciesMatching":"No hay agencias que coincidan con su solicitud"
+    "agenciesMatching":"No hay agencias que coincidan con su solicitud",
+    "publishedAt":"Publicado en:"
 }

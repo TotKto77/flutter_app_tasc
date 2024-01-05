@@ -22,8 +22,9 @@ class TopChannelsWidget extends StatelessWidget {
     var itemWidth = (screenWidth - (8 * 5)) / 4;
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    return SizedBox(
-      height: 150,
+    return Container(
+      alignment: Alignment.center,
+      height: 175,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: sourcesList == null

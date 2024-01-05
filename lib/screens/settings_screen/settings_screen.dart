@@ -22,7 +22,12 @@ class SettingsScreen extends StatelessWidget {
           ),
           SliverFillRemaining(
             hasScrollBody: false,
-            child: ThemeCheangeWidget(themeProvider: themeProvider),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                  height: 100,
+                  child: ThemeCheangeWidget(themeProvider: themeProvider)),
+            ),
           )
         ],
       ),

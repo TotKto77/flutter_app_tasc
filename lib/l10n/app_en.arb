@@ -28,5 +28,6 @@
     "noresults":"No results",
     "error":"Error",
     "darkMode":"Dark Mode",
-    "agenciesMatching":"There are no agencies matching your request"
+    "agenciesMatching":"There are no agencies matching your request",
+    "publishedAt":"Published at:"
 }

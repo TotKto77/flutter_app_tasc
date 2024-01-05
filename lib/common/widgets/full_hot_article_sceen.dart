@@ -85,7 +85,7 @@ class FullHotArticle extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(8, 16, 0, 16),
                           child: Text(
-                            'Published at: $formattedDate',
+                            "${AppLocalizations.of(context)?.publishedAt ?? ''} $formattedDate",
                             style: themeBasedStyle(
                                 themeProvider, AppStyleText.dateFullArticle),
                             textAlign: TextAlign.left,

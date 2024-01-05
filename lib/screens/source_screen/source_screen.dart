@@ -59,7 +59,7 @@ class _SourceScreenState extends State<SourceScreen> {
             slivers: [
               if (state is SourceScreenLoading) ...[
                 const SliverPadding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
                   sliver: SliverToBoxAdapter(child: SimeerTextfield()),
                 ),
                 const SliverPadding(
@@ -71,9 +71,7 @@ class _SourceScreenState extends State<SourceScreen> {
                 SliverPadding(
                   padding: const EdgeInsetsDirectional.only(bottom: 16),
                   sliver: SliverAppBar(
-                    backgroundColor: themeProvider.isDarkMode
-                        ? Color.fromARGB(255, 46, 44, 49)
-                        : Colors.white,
+                    backgroundColor: Colors.transparent,
                     pinned: true,
                     title: SearchField(
                       themeProvider: themeProvider,
