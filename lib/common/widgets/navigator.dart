@@ -35,93 +35,71 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
     var provider = Provider.of<BottomNavigationBarProvider>(context);
     return Scaffold(
       body: _widgetOptions[provider.currentIndex],
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-        child: BottomAppBar(
-          color: Colors.transparent,
-          elevation: 0,
-          child: Container(
-            height: kBottomNavigationBarHeight,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: provider.currentIndex,
+          onTap: (index) {
+            provider.currentIndex = index;
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: const SizedBox(
+                width: 24,
+                child: Icon(Icons.home_outlined),
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.5),
-                  spreadRadius: 0,
-                  blurRadius: 6,
-                  offset: const Offset(
-                      0, 2), // Уменьшите offset, чтобы поднять тень
+              activeIcon: const SizedBox(
+                width: 24,
+                child: Icon(
+                  Icons.home_filled,
                 ),
-              ],
+              ),
+              label: AppLocalizations.of(context)?.home ?? '',
             ),
-            child: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              currentIndex: provider.currentIndex,
-              onTap: (index) {
-                provider.currentIndex = index;
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: const SizedBox(
-                    width: 24,
-                    child: Icon(Icons.home_outlined),
-                  ),
-                  activeIcon: const SizedBox(
-                    width: 24,
-                    child: Icon(
-                      Icons.home_filled,
-                    ),
-                  ),
-                  label: AppLocalizations.of(context)?.home ?? '',
+            BottomNavigationBarItem(
+              icon: const SizedBox(
+                width: 24,
+                child: Icon(Icons.grid_view_outlined),
+              ),
+              activeIcon: const SizedBox(
+                width: 24,
+                child: Icon(
+                  Icons.grid_view_sharp,
                 ),
-                BottomNavigationBarItem(
-                  icon: const SizedBox(
-                    width: 24,
-                    child: Icon(Icons.grid_view_outlined),
-                  ),
-                  activeIcon: const SizedBox(
-                    width: 24,
-                    child: Icon(
-                      Icons.grid_view_sharp,
-                    ),
-                  ),
-                  label: AppLocalizations.of(context)?.source ?? '',
-                ), //
-                //
-                BottomNavigationBarItem(
-                  icon: const SizedBox(
-                    width: 24,
-                    child: Icon(Icons.search),
-                  ),
-                  activeIcon: const SizedBox(
-                    width: 24,
-                    child: Icon(
-                      Icons.search,
-                    ),
-                  ),
-                  label: AppLocalizations.of(context)?.searchButton ?? '',
+              ),
+              label: AppLocalizations.of(context)?.source ?? '',
+            ), //
+            //
+            BottomNavigationBarItem(
+              icon: const SizedBox(
+                width: 24,
+                child: Icon(Icons.search),
+              ),
+              activeIcon: const SizedBox(
+                width: 24,
+                child: Icon(
+                  Icons.search,
                 ),
+              ),
+              label: AppLocalizations.of(context)?.searchButton ?? '',
+            ),
 
-                BottomNavigationBarItem(
-                  icon: const SizedBox(
-                    width: 24,
-                    child: Icon(Icons.settings_outlined),
-                  ),
-                  activeIcon: const SizedBox(
-                    width: 24,
-                    child: Icon(
-                      Icons.settings,
-                    ),
-                  ),
-                  label: AppLocalizations.of(context)?.settings ?? '',
+            BottomNavigationBarItem(
+              icon: const SizedBox(
+                width: 24,
+                child: Icon(Icons.settings_outlined),
+              ),
+              activeIcon: const SizedBox(
+                width: 24,
+                child: Icon(
+                  Icons.settings,
                 ),
-              ],
+              ),
+              label: AppLocalizations.of(context)?.settings ?? '',
             ),
-          ),
+          ],
         ),
       ),
     );

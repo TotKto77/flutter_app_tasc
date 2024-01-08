@@ -17,46 +17,54 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     final debouncer = Debouncer(milliseconds: 500);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: TextField(
-        controller: controller,
-        onChanged: (text) {
-          debouncer.run(() {
-            BlocProvider.of<SourceScreenBloc>(context)
-                .add(SourceScreenUpdateFilter(filterText: text));
-          });
-        },
-        style: TextStyle(
-          color: themeProvider.isDarkMode ? Colors.white : Colors.black,
-          fontSize: 16,
-        ),
-        decoration: InputDecoration(
-          prefixIcon: Icon(
-            Icons.search,
-            color: themeProvider.isDarkMode ? Colors.white : Colors.black,
-          ),
-          hintText: AppLocalizations.of(context)?.search ?? '',
-          hintStyle: themeBasedStyle(themeProvider, AppStyleText.comentText),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: Colors.blue,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: TextField(
+            controller: controller,
+            onChanged: (text) {
+              debouncer.run(() {
+                BlocProvider.of<SourceScreenBloc>(context)
+                    .add(SourceScreenUpdateFilter(filterText: text));
+              });
+            },
+            style: TextStyle(
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+              fontSize: 16,
+            ),
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.search,
+                color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+              ),
+              hintText: AppLocalizations.of(context)?.search ?? '',
+              hintStyle:
+                  themeBasedStyle(themeProvider, AppStyleText.comentText),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(
+                  color: Colors.blue,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color: Colors.grey.shade400,
+                  width: 2,
+                ),
+              ),
+              contentPadding: const EdgeInsets.all(12),
             ),
           ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: Colors.grey.shade300,
-              width: 1,
-            ),
-          ),
-          contentPadding: const EdgeInsets.all(12),
         ),
-      ),
+        const SizedBox(
+          height: 10,
+        )
+      ],
     );
   }
 }

@@ -52,7 +52,10 @@ class _SearchScreenState extends State<SearchScreen> {
             return CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  backgroundColor: AppClor.background,
+                  toolbarHeight: 70,
+                  backgroundColor: themeProvider.isDarkMode
+                      ? AppClor.background
+                      : Colors.white,
                   pinned: true,
                   title: SearchFieldSearchScreen(
                     onSearch: (query) {

@@ -73,7 +73,10 @@ class _SourceScreenState extends State<SourceScreen> {
                   SliverPadding(
                     padding: const EdgeInsetsDirectional.only(bottom: 16),
                     sliver: SliverAppBar(
-                      backgroundColor: AppClor.background,
+                      toolbarHeight: 70,
+                      backgroundColor: themeProvider.isDarkMode
+                          ? AppClor.background
+                          : Colors.white,
                       pinned: true,
                       title: SearchField(
                         themeProvider: themeProvider,

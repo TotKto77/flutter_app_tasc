@@ -28,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 100,
                   child: ThemeCheangeWidget(themeProvider: themeProvider)),
             ),
-          )
+          ),
         ],
       ),
     );
