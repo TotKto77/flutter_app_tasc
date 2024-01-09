@@ -100,9 +100,7 @@ class NewsListWidget extends StatelessWidget {
                                     color: AppColors.backgroundLight,
                                   ),
                                 ),
-                                const Spacer(
-                                  flex: 1,
-                                ),
+                                const Spacer(),
                                 Text(
                                   formattedDate,
                                   style: const TextStyle(

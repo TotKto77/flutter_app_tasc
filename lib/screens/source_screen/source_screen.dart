@@ -3,7 +3,7 @@ import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/source_screen/bloc/source_screen_bloc.dart';
-import 'package:flutter_app_tasc/screens/source_screen/components/alert_dialog_source.dart';
+import 'package:flutter_app_tasc/screens/source_screen/components/error_placeholder_source.dart';
 import 'package:flutter_app_tasc/screens/source_screen/components/search_field.dart';
 import 'package:flutter_app_tasc/screens/source_screen/components/shimer_screen_source/shimer.dart';
 import 'package:flutter_app_tasc/screens/source_screen/components/source_grid.dart';
@@ -91,7 +91,7 @@ class _SourceScreenState extends State<SourceScreen> {
                 ],
                 if (state is SourceScreenError) ...[
                   const SliverToBoxAdapter(
-                    child: AlertDialogConectionErrorSource(),
+                    child: ErrorPlaceholderSource(),
                   ),
                 ],
               ],
