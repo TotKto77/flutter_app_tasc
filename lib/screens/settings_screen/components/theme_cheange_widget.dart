@@ -19,7 +19,9 @@ class ThemeCheangeWidget extends StatelessWidget {
         children: [
           Icon(
             themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode,
-            color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+            color: themeProvider.isDarkMode
+                ? AppColors.backgroundLight
+                : AppColors.backgroundDark,
           ),
           const SizedBox(width: 8.0),
           Text(

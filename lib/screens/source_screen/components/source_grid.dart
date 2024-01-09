@@ -28,8 +28,8 @@ class AgencySliverGrid extends StatelessWidget {
           child: Text(
             AppLocalizations.of(context)?.agenciesMatching ?? '',
             style: themeProvider.isDarkMode
-                ? const TextStyle(color: Colors.white)
-                : const TextStyle(color: Colors.black),
+                ? const TextStyle(color: AppColors.backgroundLight)
+                : const TextStyle(color: AppColors.backgroundDark),
           ),
         ),
       );
@@ -63,7 +63,7 @@ class AgencySliverGrid extends StatelessWidget {
                     blurRadius: 7,
                     offset: const Offset(0, 2),
                     spreadRadius: 1,
-                    color: Colors.white.withOpacity(0.5),
+                    color: AppColors.backgroundLight.withOpacity(0.5),
                   ),
                 ],
                 borderRadius: BorderRadius.circular(12),

@@ -29,7 +29,9 @@ class SearchFieldSearchScreen extends StatelessWidget {
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.search,
-                color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+                color: themeProvider.isDarkMode
+                    ? AppColors.backgroundLight
+                    : AppColors.backgroundDark,
               ),
               hintText: AppLocalizations.of(context)?.search ?? '',
               hintStyle:
@@ -40,13 +42,13 @@ class SearchFieldSearchScreen extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
-                  color: Colors.blue,
+                  color: AppColors.selectedItem,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(
-                  color: Colors.grey.shade400,
+                  color: AppColors.shimer400,
                   width: 2,
                 ),
               ),

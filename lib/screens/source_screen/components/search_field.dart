@@ -30,13 +30,17 @@ class SearchField extends StatelessWidget {
               });
             },
             style: TextStyle(
-              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+              color: themeProvider.isDarkMode
+                  ? AppColors.backgroundLight
+                  : AppColors.backgroundDark,
               fontSize: 16,
             ),
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.search,
-                color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+                color: themeProvider.isDarkMode
+                    ? AppColors.backgroundLight
+                    : AppColors.backgroundDark,
               ),
               hintText: AppLocalizations.of(context)?.search ?? '',
               hintStyle:
@@ -47,13 +51,13 @@ class SearchField extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
-                  color: Colors.blue,
+                  color: AppColors.selectedItem,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(
-                  color: Colors.grey.shade400,
+                  color: AppColors.shimer400,
                   width: 2,
                 ),
               ),

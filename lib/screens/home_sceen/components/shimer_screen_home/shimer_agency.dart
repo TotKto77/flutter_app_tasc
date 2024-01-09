@@ -8,8 +8,8 @@ class ShimerTopChannelsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey.shade300,
-      highlightColor: Colors.grey.shade100,
+      baseColor: AppColors.shimer300,
+      highlightColor: AppColors.shimer100,
       enabled: true,
       child: SizedBox(
         height: 150,
@@ -34,13 +34,13 @@ class ShimerTopChannelsWidget extends StatelessWidget {
                   Container(
                     width: 38,
                     height: 16,
-                    color: Colors.grey[400],
+                    color: AppColors.shimer400,
                   ),
                   const SizedBox(height: 4),
                   Container(
                     width: 38,
                     height: 16,
-                    color: Colors.grey[400],
+                    color: AppColors.shimer400,
                   ),
                 ],
               ),

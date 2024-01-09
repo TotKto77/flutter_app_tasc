@@ -57,7 +57,7 @@ class SearchResultsList extends StatelessWidget {
         child: Center(
           child: Text(
             AppLocalizations.of(context)?.error ?? ' :$errorMessage',
-            style: const TextStyle(fontSize: 18.0, color: Colors.red),
+            style: const TextStyle(fontSize: 18.0, color: AppColors.alertText),
           ),
         ),
       );

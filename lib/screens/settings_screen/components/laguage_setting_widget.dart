@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
-
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/widgets/language_flag_widget.dart';
@@ -22,7 +21,7 @@ class LanguageSettingWidget extends StatelessWidget {
           const LanguageFlagWidget(),
           const SizedBox(width: 8),
           Text(
-            AppLocalizations.of(context)?.title ?? 'Language',
+            AppLocalizations.of(context)?.title ?? '',
             style: themeBasedStyle(themeProvider, AppStyleText.mainText),
           ),
           const Spacer(),

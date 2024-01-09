@@ -15,8 +15,8 @@ class ShimerSource extends StatelessWidget {
       ),
       itemBuilder: (BuildContext context, int index) {
         return Shimmer.fromColors(
-          baseColor: Colors.grey.shade300,
-          highlightColor: Colors.grey.shade100,
+          baseColor: AppColors.shimer300,
+          highlightColor: AppColors.shimer100,
           enabled: true,
           child: Container(
             margin: const EdgeInsets.only(bottom: 10),
@@ -41,8 +41,8 @@ class SimeerTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-        baseColor: Colors.grey.shade300,
-        highlightColor: Colors.grey.shade100,
+        baseColor: AppColors.shimer300,
+        highlightColor: AppColors.shimer100,
         enabled: true,
         child: Container(
           padding: const EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimerGridWidget extends StatelessWidget {
@@ -15,12 +16,12 @@ class ShimerGridWidget extends StatelessWidget {
       ),
       itemBuilder: (BuildContext context, int index) {
         return Shimmer.fromColors(
-          baseColor: Colors.grey.shade300,
-          highlightColor: Colors.grey.shade100,
+          baseColor: AppColors.shimer300,
+          highlightColor: AppColors.shimer100,
           enabled: true,
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: AppColors.separatorColor,
               borderRadius: BorderRadius.circular(10),
             ),
             height: 150,

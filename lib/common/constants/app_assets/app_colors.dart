@@ -4,8 +4,11 @@ class AppColors {
   static const Color backgroundLight = Colors.white;
   static const Color black = Colors.black;
   static const Color selectedItem = Colors.blueAccent;
+  static const Color alertText = Colors.red;
   static const Color separatorColor = Colors.grey;
-
+  static Color shimer400 = Colors.grey.shade400;
+  static Color shimer300 = Colors.grey.shade300;
+  static Color shimer100 = Colors.grey.shade100;
   static const Color backgroundDark = Color.fromARGB(255, 46, 44, 49);
 }
 
