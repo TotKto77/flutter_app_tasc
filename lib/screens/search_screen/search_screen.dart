@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
+// import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/search_screen/bloc/search_bloc.dart';
@@ -53,9 +53,9 @@ class _SearchScreenState extends State<SearchScreen> {
               slivers: [
                 SliverAppBar(
                   toolbarHeight: 70,
-                  backgroundColor: themeProvider.isDarkMode
-                      ? AppColors.backgroundDark
-                      : AppColors.backgroundLight,
+                  // backgroundColor: themeProvider.isDarkMode
+                  //     ? AppColors.backgroundDark
+                  //     : AppColors.backgroundLight,
                   pinned: true,
                   title: SearchFieldSearchScreen(
                     onSearch: (query) {
