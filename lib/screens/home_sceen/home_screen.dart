@@ -99,7 +99,6 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     sliver: GridHotNews(
                       hotnewsList: state.hotnewsList,
-                      themeProvider: themeProvider,
                     ),
                   ),
                 ],

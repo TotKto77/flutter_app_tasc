@@ -6,19 +6,20 @@ import 'package:flutter_app_tasc/common/widgets/full_hot_article_sceen.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
+import 'package:provider/provider.dart';
 
 class GridHotNews extends StatelessWidget {
   final List<Article>? hotnewsList;
-  final ThemeProvider themeProvider;
 
   const GridHotNews({
     super.key,
     required this.hotnewsList,
-    required this.themeProvider,
+    //required this.themeProvider,
   });
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     final int itemCount = hotnewsList?.length ?? 0;
     return SliverGrid.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

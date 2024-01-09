@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
+
 import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/source_screen/bloc/source_screen_bloc.dart';
@@ -73,9 +74,9 @@ class _SourceScreenState extends State<SourceScreen> {
                     padding: const EdgeInsetsDirectional.only(bottom: 16),
                     sliver: SliverAppBar(
                       toolbarHeight: 70,
-                      // backgroundColor: themeProvider.isDarkMode
-                      //     ? AppColors.backgroundDark
-                      //     : AppColors.backgroundLight,
+                      backgroundColor: themeProvider.isDarkMode
+                          ? AppColors.backgroundDark
+                          : AppColors.backgroundLight,
                       pinned: true,
                       title: SearchField(
                         themeProvider: themeProvider,
