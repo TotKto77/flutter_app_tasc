@@ -16,7 +16,6 @@ final class HomePageLoadData extends HomePageState {
     required this.articlesList,
     this.hotnewsList,
     this.sourcesList,
-    // sources
   });
 }
 

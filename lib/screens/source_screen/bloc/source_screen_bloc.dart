@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
@@ -10,7 +10,7 @@ part 'source_screen_state.dart';
 
 class SourceScreenBloc extends Bloc<SourceScreenEvent, SourceScreenState> {
   final Repository repo;
-  List<Source> _allSources = []; // Для хранения полного списка источников
+  List<Source> _allSources = [];
 
   SourceScreenBloc(this.repo) : super(SourceScreenInitial());
 
@@ -22,17 +22,18 @@ class SourceScreenBloc extends Bloc<SourceScreenEvent, SourceScreenState> {
         final articlesList = await repo.getTopHeadLines();
         final hotnewsList = await repo.getHotNews();
         final sourcesList = await repo.getToSource();
-        _allSources =
-            sourcesList.sources; // Сохранение полный список источников
+        _allSources = sourcesList.sources;
         yield SourceScreenData(
           filterText: "",
           articlesList: articlesList.articles ?? [],
           hotnewsList: hotnewsList.articles ?? [],
           sourcesList: _allSources,
-          isFilterApplied: false, // Изначально фильтр не применен
+          isFilterApplied: false,
         );
       } catch (e) {
-        print('error: $e');
+        if (kDebugMode) {
+          print('error: $e');
+        }
         yield SourceScreenError();
       }
     } else if (event is SourceScreenUpdateFilter) {
@@ -46,19 +47,14 @@ class SourceScreenBloc extends Bloc<SourceScreenEvent, SourceScreenState> {
         }).toList();
         yield currentState.copyWith(
             filterText: event.filterText,
-            sourcesList: filteredSourcesList, // Обновленный список источников
-            isFilterApplied: true // фильтр применен
-            );
+            sourcesList: filteredSourcesList,
+            isFilterApplied: true);
       }
     } else if (event is SourceScreenResetFilter) {
       final currentState = state;
       if (currentState is SourceScreenData) {
-        // Сброс фильтра и возврат к полному списку
         yield currentState.copyWith(
-            filterText: "",
-            sourcesList: _allSources, // Возвращаем полный список источников
-            isFilterApplied: false // Сброс фильтрации
-            );
+            filterText: "", sourcesList: _allSources, isFilterApplied: false);
       }
     }
   }

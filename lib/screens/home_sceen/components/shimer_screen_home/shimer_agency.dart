@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimerTopChannelsWidget extends StatelessWidget {
@@ -14,7 +15,7 @@ class ShimerTopChannelsWidget extends StatelessWidget {
         height: 150,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 20, // Отображаем 20 элементов
+          itemCount: 20,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -25,7 +26,7 @@ class ShimerTopChannelsWidget extends StatelessWidget {
                     width: 60,
                     height: 60,
                     decoration: const BoxDecoration(
-                      color: Colors.grey,
+                      color: AppColors.separatorColor,
                       shape: BoxShape.circle,
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
@@ -31,11 +32,10 @@ class FullHotArticle extends StatelessWidget {
                     icon: Icon(
                       Icons.arrow_back,
                       color: themeProvider.isDarkMode
-                          ? Colors.white
-                          : Colors.black,
-                    ), // Иконка кнопки назад
-                    onPressed: () =>
-                        Navigator.of(context).pop(), // Обработчик нажатия
+                          ? AppColors.backgroundLight
+                          : AppColors.backgroundDark,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
                   ),
                   title: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -75,7 +75,6 @@ class FullHotArticle extends StatelessWidget {
                     ),
                   ),
                 ),
-                // ...
                 SliverToBoxAdapter(
                   child: SizedBox(
                     width: double.infinity,
@@ -124,9 +123,11 @@ class FullHotArticle extends StatelessWidget {
                 final url = newsArticle.url;
                 if (url != null && url.isNotEmpty) {
                   try {
-                    launch(url);
+                    launch(url); // TODO новая версия порой работает некоректно
                   } catch (e) {
-                    print(e);
+                    if (kDebugMode) {
+                      print(e);
+                    }
                   }
                 }
               },

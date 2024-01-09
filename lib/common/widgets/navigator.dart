@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
-  // static final GlobalKey<_MyBottomNavigationState> globalKey = GlobalKey();
 
   @override
   State<MyBottomNavigation> createState() => _MyBottomNavigationState();
@@ -35,72 +34,66 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
     var provider = Provider.of<BottomNavigationBarProvider>(context);
     return Scaffold(
       body: _widgetOptions[provider.currentIndex],
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: provider.currentIndex,
-          onTap: (index) {
-            provider.currentIndex = index;
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: const SizedBox(
-                width: 24,
-                child: Icon(Icons.home_outlined),
-              ),
-              activeIcon: const SizedBox(
-                width: 24,
-                child: Icon(
-                  Icons.home_filled,
-                ),
-              ),
-              label: AppLocalizations.of(context)?.home ?? '',
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: provider.currentIndex,
+        onTap: (index) {
+          provider.currentIndex = index;
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: const SizedBox(
+              width: 24,
+              child: Icon(Icons.home_outlined),
             ),
-            BottomNavigationBarItem(
-              icon: const SizedBox(
-                width: 24,
-                child: Icon(Icons.grid_view_outlined),
+            activeIcon: const SizedBox(
+              width: 24,
+              child: Icon(
+                Icons.home_filled,
               ),
-              activeIcon: const SizedBox(
-                width: 24,
-                child: Icon(
-                  Icons.grid_view_sharp,
-                ),
-              ),
-              label: AppLocalizations.of(context)?.source ?? '',
-            ), //
-            //
-            BottomNavigationBarItem(
-              icon: const SizedBox(
-                width: 24,
-                child: Icon(Icons.search),
-              ),
-              activeIcon: const SizedBox(
-                width: 24,
-                child: Icon(
-                  Icons.search,
-                ),
-              ),
-              label: AppLocalizations.of(context)?.searchButton ?? '',
             ),
-
-            BottomNavigationBarItem(
-              icon: const SizedBox(
-                width: 24,
-                child: Icon(Icons.settings_outlined),
-              ),
-              activeIcon: const SizedBox(
-                width: 24,
-                child: Icon(
-                  Icons.settings,
-                ),
-              ),
-              label: AppLocalizations.of(context)?.settings ?? '',
+            label: AppLocalizations.of(context)?.home ?? '',
+          ),
+          BottomNavigationBarItem(
+            icon: const SizedBox(
+              width: 24,
+              child: Icon(Icons.grid_view_outlined),
             ),
-          ],
-        ),
+            activeIcon: const SizedBox(
+              width: 24,
+              child: Icon(
+                Icons.grid_view_sharp,
+              ),
+            ),
+            label: AppLocalizations.of(context)?.source ?? '',
+          ),
+          BottomNavigationBarItem(
+            icon: const SizedBox(
+              width: 24,
+              child: Icon(Icons.search),
+            ),
+            activeIcon: const SizedBox(
+              width: 24,
+              child: Icon(
+                Icons.search,
+              ),
+            ),
+            label: AppLocalizations.of(context)?.searchButton ?? '',
+          ),
+          BottomNavigationBarItem(
+            icon: const SizedBox(
+              width: 24,
+              child: Icon(Icons.settings_outlined),
+            ),
+            activeIcon: const SizedBox(
+              width: 24,
+              child: Icon(
+                Icons.settings,
+              ),
+            ),
+            label: AppLocalizations.of(context)?.settings ?? '',
+          ),
+        ],
       ),
     );
   }

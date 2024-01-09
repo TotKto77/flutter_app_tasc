@@ -6,7 +6,9 @@ import 'package:intl/intl.dart';
 
 TextStyle themeBasedStyle(ThemeProvider themeProvider, TextStyle baseStyle) {
   return baseStyle.copyWith(
-    color: themeProvider.isDarkMode ? Colors.white : AppClor.background,
+    color: themeProvider.isDarkMode
+        ? AppColors.backgroundLight
+        : AppColors.backgroundDark,
   );
 }
 

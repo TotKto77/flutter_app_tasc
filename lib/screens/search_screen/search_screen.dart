@@ -54,8 +54,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 SliverAppBar(
                   toolbarHeight: 70,
                   backgroundColor: themeProvider.isDarkMode
-                      ? AppClor.background
-                      : Colors.white,
+                      ? AppColors.backgroundDark
+                      : AppColors.backgroundLight,
                   pinned: true,
                   title: SearchFieldSearchScreen(
                     onSearch: (query) {

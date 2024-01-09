@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
+import 'package:flutter_app_tasc/logic/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter_app_tasc/common/provider/language_provider.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';

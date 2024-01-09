@@ -1,23 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AppClor {
-  static const background = Color.fromARGB(255, 46, 44, 49);
+class AppColors {
+  static const Color backgroundLight = Colors.white;
+  static const Color black = Colors.black;
+  static const Color selectedItem = Colors.blueAccent;
+  static const Color separatorColor = Colors.grey;
 
-  static const shimmerGradient = LinearGradient(
-    colors: [
-      Color(0xFFEBEBF4),
-      Color(0xFFF4F4F4),
-      Color(0xFFEBEBF4),
-    ],
-    stops: [
-      0.1,
-      0.3,
-      0.4,
-    ],
-    begin: Alignment(-1.0, -0.3),
-    end: Alignment(1.0, 0.3),
-    tileMode: TileMode.clamp,
-  );
+  static const Color backgroundDark = Color.fromARGB(255, 46, 44, 49);
 }
 
 class AppStyleText {
@@ -45,40 +34,40 @@ class AppStyleText {
   static const comentGredText = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
-    color: AppClor.background,
+    color: AppColors.backgroundDark,
   );
   static const titleGredText = TextStyle(
     fontSize: 18.0,
     fontWeight: FontWeight.bold,
-    color: AppClor.background,
+    color: AppColors.backgroundDark,
     overflow: TextOverflow.ellipsis,
   );
   static const titleListTextDetails = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.bold,
-    color: AppClor.background,
+    color: AppColors.backgroundDark,
     overflow: TextOverflow.ellipsis,
   );
   static const titleFullArticle = TextStyle(
     fontSize: 24.0,
     fontWeight: FontWeight.bold,
-    color: AppClor.background,
+    color: AppColors.backgroundDark,
   );
 
   static const dateFullArticle = TextStyle(
     fontSize: 18.0,
     fontWeight: FontWeight.w400,
-    color: AppClor.background,
+    color: AppColors.backgroundDark,
   );
   static const contendArticle = TextStyle(
     fontSize: 20.0,
     fontWeight: FontWeight.w400,
-    color: AppClor.background,
+    color: AppColors.backgroundDark,
   );
   static const dateSList = TextStyle(
     fontSize: 12.0,
     fontWeight: FontWeight.w400,
-    color: AppClor.background,
+    color: AppColors.backgroundDark,
   );
   static const titleAgencyGridText = TextStyle(
     fontSize: 14.0,

@@ -53,8 +53,7 @@ class NewsListWidget extends StatelessWidget {
                   children: [
                     Positioned.fill(
                         child: CachedNetworkImage(
-                      imageUrl: news.urlToImage ??
-                          '', // Убедитесь, что это не пустая строка
+                      imageUrl: news.urlToImage ?? '',
                       fit: BoxFit.cover,
                       placeholder: (context, url) =>
                           const Center(child: CircularProgressIndicator()),
@@ -98,7 +97,7 @@ class NewsListWidget extends StatelessWidget {
                                   news.source?.name ?? '',
                                   style: const TextStyle(
                                     fontSize: 14.0,
-                                    color: Colors.white,
+                                    color: AppColors.backgroundLight,
                                   ),
                                 ),
                                 const Spacer(
@@ -108,7 +107,7 @@ class NewsListWidget extends StatelessWidget {
                                   formattedDate,
                                   style: const TextStyle(
                                     fontSize: 14.0,
-                                    color: Colors.white,
+                                    color: AppColors.backgroundLight,
                                   ),
                                 ),
                               ],

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
-import 'package:meta/meta.dart';
 
 part 'agency_detailed_event.dart';
 part 'agency_detailed_state.dart';
@@ -19,7 +19,9 @@ class AgencyDetailedBloc
 
           emit(AgencyDetailedData(listArticles: listNews.articles ?? []));
         } catch (e) {
-          print('error: $e');
+          if (kDebugMode) {
+            print('error: $e');
+          }
           emit(AgencyDetailedError());
         }
       },

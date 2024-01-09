@@ -115,7 +115,7 @@ class CustomDividerWithDot extends StatelessWidget {
         children: [
           const Expanded(
             child: Divider(
-              color: Colors.grey,
+              color: AppColors.separatorColor,
               thickness: 2,
             ),
           ),
@@ -123,14 +123,14 @@ class CustomDividerWithDot extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             height: 6,
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: AppColors.separatorColor,
               borderRadius: BorderRadius.circular(10),
             ),
             margin: const EdgeInsets.symmetric(horizontal: 8),
           ),
           const Expanded(
             child: Divider(
-              color: Colors.grey,
+              color: AppColors.separatorColor,
               thickness: 2,
             ),
           ),

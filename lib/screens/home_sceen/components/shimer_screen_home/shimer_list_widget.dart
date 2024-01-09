@@ -25,14 +25,14 @@ class ShimerNewsListWidget extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.7,
               margin: const EdgeInsets.symmetric(horizontal: 10.0),
               decoration: BoxDecoration(
-                color: Colors.grey, // Здесь задается серый цвет фона
+                color: Colors.grey,
                 borderRadius: BorderRadius.circular(16.0),
                 boxShadow: const [
                   BoxShadow(
                     color: Colors.black26,
                     blurRadius: 4.0,
                     spreadRadius: 2.0,
-                    offset: Offset(2.0, 2.0), // changes position of shadow
+                    offset: Offset(2.0, 2.0),
                   ),
                 ],
               ),

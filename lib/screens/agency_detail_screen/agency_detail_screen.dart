@@ -1,8 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_assets.dart';
 import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
-import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
+import 'package:flutter_app_tasc/logic/networking/dio/dio_client.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/common/widgets/full_hot_article_sceen.dart';
@@ -71,7 +72,9 @@ class AgencyDetailScreen extends StatelessWidget {
                                   try {
                                     launch(url);
                                   } catch (e) {
-                                    print(e);
+                                    if (kDebugMode) {
+                                      print(e);
+                                    }
                                   }
                                 }
                               },
@@ -137,8 +140,7 @@ class AgencyDetailScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                article.urlToImage !=
-                                        null // Проверка на null перед созданием виджета
+                                article.urlToImage != null
                                     ? Expanded(
                                         child: Padding(
                                           padding:

@@ -62,7 +62,6 @@ class TopChannelsWidget extends StatelessWidget {
                         builder: (context) => AgencyDetailScreen(
                           sourceId: agency.id ?? '',
                           source: agency,
-                          // sourcesList: [],
                         ),
                       ));
                 },

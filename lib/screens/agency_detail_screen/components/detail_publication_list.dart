@@ -21,7 +21,7 @@ class DetailPublicationSList extends StatelessWidget {
             onTap: () {},
             child: Card(
               clipBehavior: Clip.antiAlias,
-              color: Colors.white,
+              color: AppColors.backgroundLight,
               child: Row(
                 children: [
                   Expanded(
@@ -44,7 +44,7 @@ class DetailPublicationSList extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
                               alignment: Alignment.bottomLeft,
                               child: Text(
-                                'about ${DateTime.now().difference(publication.datePublished).inHours} hours ago',
+                                ' ${DateTime.now().difference(publication.datePublished).inHours}  ',
                                 style: AppStyleText.dateSList,
                               ),
                             ),

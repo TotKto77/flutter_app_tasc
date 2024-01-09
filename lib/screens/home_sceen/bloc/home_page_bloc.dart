@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
 import 'package:flutter_app_tasc/logic/models/source.dart';
-import 'package:meta/meta.dart';
 
 part 'home_page_event.dart';
 part 'home_page_state.dart';
@@ -24,7 +24,9 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
           sourcesList: sourcesList.sources,
         ));
       } catch (e) {
-        print('error: $e');
+        if (kDebugMode) {
+          print('error: $e');
+        }
         emit(HomePageError());
       }
     });

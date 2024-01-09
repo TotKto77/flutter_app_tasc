@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_app_tasc/common/networking/dio/constants.dart';
+import 'package:flutter_app_tasc/logic/networking/dio/constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioClient {

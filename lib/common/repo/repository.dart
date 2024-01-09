@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_app_tasc/common/networking/dio/dio_client.dart';
-import 'package:flutter_app_tasc/common/networking/dio/dio_exception.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_app_tasc/logic/networking/dio/dio_client.dart';
+import 'package:flutter_app_tasc/logic/networking/dio/dio_exception.dart';
 import 'package:flutter_app_tasc/logic/models/article_response.dart';
 import 'package:flutter_app_tasc/logic/models/hot_news_response.dart';
 
@@ -18,7 +19,9 @@ class Repository {
 
       final dataJson = response.data;
 
-      print('DataJson $dataJson');
+      if (kDebugMode) {
+        print('DataJson $dataJson');
+      }
 
       return TopHeadlinesResponse.fromJson(response.data);
     } on DioException catch (e) {
@@ -40,7 +43,9 @@ class Repository {
 
       final dataJson = response.data;
 
-      print('DataJson $dataJson');
+      if (kDebugMode) {
+        print('DataJson $dataJson');
+      }
 
       return HotNewsResponse.fromJson(response.data);
     } on DioException catch (e) {
@@ -55,7 +60,9 @@ class Repository {
 
       final dataJson = response.data;
 
-      print('DataJson $dataJson');
+      if (kDebugMode) {
+        print('DataJson $dataJson');
+      }
 
       return SourceResponse.fromJson(response.data);
     } on DioException catch (e) {
@@ -66,16 +73,15 @@ class Repository {
 
   Future<ArticlesResponse> getArticleBySourceId(
       {required String sourceId}) async {
-    ///string ?
     try {
       final response =
           await dioClient.dio.get('top-headlines?sources=$sourceId');
 
-      ///????
-
       final dataJson = response.data;
 
-      print('DataJson $dataJson');
+      if (kDebugMode) {
+        print('DataJson $dataJson');
+      }
 
       return ArticlesResponse.fromJson(response.data);
     } on DioException catch (e) {
@@ -98,7 +104,9 @@ class Repository {
 
       final dataJson = response.data;
 
-      print('DataJson $dataJson');
+      if (kDebugMode) {
+        print('DataJson $dataJson');
+      }
 
       return HotNewsResponse.fromJson(response.data);
     } on DioException catch (e) {

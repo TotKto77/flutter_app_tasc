@@ -43,7 +43,7 @@ class _LanguagePickerWidgetState extends State<LanguagePickerWidget> {
                         fontSize: 16.0,
                         color: (locale.languageCode ==
                                 provider.locale.languageCode)
-                            ? Colors.blue
+                            ? AppColors.selectedItem
                             : themeBasedStyle(
                                     themeProvider, AppStyleText.smolText)
                                 .color,

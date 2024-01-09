@@ -42,7 +42,6 @@ class _SourceScreenState extends State<SourceScreen> {
     }
   }
 
-// Очистка контроллера
   @override
   void dispose() {
     _searchController.dispose();
@@ -75,8 +74,8 @@ class _SourceScreenState extends State<SourceScreen> {
                     sliver: SliverAppBar(
                       toolbarHeight: 70,
                       backgroundColor: themeProvider.isDarkMode
-                          ? AppClor.background
-                          : Colors.white,
+                          ? AppColors.backgroundDark
+                          : AppColors.backgroundLight,
                       pinned: true,
                       title: SearchField(
                         themeProvider: themeProvider,

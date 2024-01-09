@@ -23,7 +23,7 @@ class ShimerGridWidget extends StatelessWidget {
               color: Colors.grey,
               borderRadius: BorderRadius.circular(10),
             ),
-            height: 150, // Задайте предпочтительную высоту
+            height: 150,
           ),
         );
       },

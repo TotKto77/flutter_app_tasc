@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter_app_tasc/common/repo/repository.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
@@ -18,7 +18,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(SearchLoaded(
             searchArticlesList: searchArticlesList.articles ?? []));
       } catch (e) {
-        print('error: $e');
+        if (kDebugMode) {
+          print('error: $e');
+        }
         emit(SearchError(e.toString()));
       }
     });

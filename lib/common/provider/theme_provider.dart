@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
@@ -8,15 +9,16 @@ class ThemeProvider extends ChangeNotifier {
 
   ThemeData get lightTheme {
     return ThemeData.light().copyWith(
-      textTheme: const TextTheme(bodyLarge: TextStyle(color: Colors.black)),
-      iconTheme: const IconThemeData(color: Colors.black),
+      textTheme: const TextTheme(bodyLarge: TextStyle(color: AppColors.black)),
+      iconTheme: const IconThemeData(color: AppColors.black),
     );
   }
 
   ThemeData get darkTheme {
     return ThemeData.dark().copyWith(
-      textTheme: const TextTheme(bodyLarge: TextStyle(color: Colors.white)),
-      iconTheme: const IconThemeData(color: Colors.white),
+      textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: AppColors.backgroundLight)),
+      iconTheme: const IconThemeData(color: AppColors.backgroundLight),
     );
   }
 
@@ -24,8 +26,8 @@ class ThemeProvider extends ChangeNotifier {
     themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
     SystemChrome.setSystemUIOverlayStyle(
       themeMode == ThemeMode.dark
-          ? SystemUiOverlayStyle.light // Светлые иконки для тёмной темы
-          : SystemUiOverlayStyle.dark, // Тёмные иконки для светлой темы
+          ? SystemUiOverlayStyle.light
+          : SystemUiOverlayStyle.dark,
     );
     notifyListeners();
   }

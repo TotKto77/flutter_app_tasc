@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimerSource extends StatelessWidget {
@@ -23,7 +24,7 @@ class ShimerSource extends StatelessWidget {
             width: 60,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: AppColors.separatorColor,
               borderRadius: BorderRadius.circular(10),
             ),
           ),
@@ -46,7 +47,7 @@ class SimeerTextfield extends StatelessWidget {
         child: Container(
           padding: const EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: AppColors.separatorColor,
             borderRadius: BorderRadius.circular(10),
           ),
         ));
