@@ -66,7 +66,6 @@ class HomeScreen extends StatelessWidget {
                     sliver: SliverToBoxAdapter(
                       child: NewsListWidget(
                         articlesList: state.articlesList,
-                        themeProvider: themeProvider,
                       ),
                     ),
                   ),

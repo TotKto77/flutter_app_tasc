@@ -14,7 +14,6 @@ class GridHotNews extends StatelessWidget {
   const GridHotNews({
     super.key,
     required this.hotnewsList,
-    //required this.themeProvider,
   });
 
   @override
@@ -42,7 +41,6 @@ class GridHotNews extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => FullHotArticle(
                       newsArticle: news,
-                      themeProvider: themeProvider,
                     ),
                   ));
             },

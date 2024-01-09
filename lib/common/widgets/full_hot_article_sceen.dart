@@ -6,19 +6,21 @@ import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/logic/models/articles.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FullHotArticle extends StatelessWidget {
   final Article newsArticle;
-  final ThemeProvider themeProvider;
 
-  const FullHotArticle(
-      {Key? key, required this.newsArticle, required this.themeProvider})
-      : super(key: key);
+  const FullHotArticle({
+    Key? key,
+    required this.newsArticle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     final String formattedDate =
         formatDate(newsArticle.publishedAt, Localizations.localeOf(context));
     return Scaffold(

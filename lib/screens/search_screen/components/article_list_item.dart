@@ -74,7 +74,6 @@ class SearchResultsList extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => FullHotArticle(
                     newsArticle: article,
-                    themeProvider: themeProvider,
                   ),
                 ));
           },
