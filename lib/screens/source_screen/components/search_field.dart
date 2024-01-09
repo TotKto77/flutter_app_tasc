@@ -6,15 +6,15 @@ import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_app_tasc/screens/source_screen/bloc/source_screen_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SearchField extends StatelessWidget {
-  final ThemeProvider themeProvider;
   final TextEditingController controller;
-  const SearchField(
-      {super.key, required this.themeProvider, required this.controller});
+  const SearchField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     final debouncer = Debouncer(milliseconds: 500);
 
     return Column(

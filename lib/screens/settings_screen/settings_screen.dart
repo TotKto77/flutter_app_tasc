@@ -11,10 +11,10 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    return Scaffold(
+    return const Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          const SliverPadding(
+          SliverPadding(
             padding: EdgeInsets.fromLTRB(8, 60, 8, 24),
             sliver: SliverToBoxAdapter(
               child: LanguageSettingWidget(),
@@ -24,9 +24,7 @@ class SettingsScreen extends StatelessWidget {
             hasScrollBody: false,
             child: Align(
               alignment: Alignment.topCenter,
-              child: SizedBox(
-                  height: 100,
-                  child: ThemeCheangeWidget(themeProvider: themeProvider)),
+              child: SizedBox(height: 100, child: ThemeCheangeWidget()),
             ),
           ),
         ],

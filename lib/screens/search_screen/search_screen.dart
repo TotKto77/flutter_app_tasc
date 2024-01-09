@@ -54,7 +54,7 @@ class _SearchScreenState extends State<SearchScreen> {
               slivers: [
                 SliverAppBar(
                   backgroundColor: themeProvider.isDarkMode
-                      ? AppColors.backgroundDark
+                      ? Theme.of(context).scaffoldBackgroundColor
                       : AppColors.backgroundLight,
                   toolbarHeight: 70,
                   pinned: true,
@@ -62,7 +62,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     onSearch: (query) {
                       context.read<SearchBloc>().add(SearchInitiated(query));
                     },
-                    themeProvider: themeProvider,
                   ),
                 ),
                 if (state is SearchLoading)

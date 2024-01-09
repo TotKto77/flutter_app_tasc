@@ -75,11 +75,10 @@ class _SourceScreenState extends State<SourceScreen> {
                     sliver: SliverAppBar(
                       toolbarHeight: 70,
                       backgroundColor: themeProvider.isDarkMode
-                          ? AppColors.backgroundDark
+                          ? Theme.of(context).scaffoldBackgroundColor
                           : AppColors.backgroundLight,
                       pinned: true,
                       title: SearchField(
-                        themeProvider: themeProvider,
                         controller: _searchController,
                       ),
                     ),

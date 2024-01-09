@@ -3,17 +3,16 @@ import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class ThemeCheangeWidget extends StatelessWidget {
   const ThemeCheangeWidget({
     super.key,
-    required this.themeProvider,
   });
-
-  final ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return SwitchListTile(
       title: Row(
         mainAxisSize: MainAxisSize.min,

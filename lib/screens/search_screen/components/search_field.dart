@@ -3,18 +3,18 @@ import 'package:flutter_app_tasc/common/constants/app_assets/app_colors.dart';
 import 'package:flutter_app_tasc/common/functions/text_and_data_formating.dart';
 import 'package:flutter_app_tasc/common/provider/theme_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SearchFieldSearchScreen extends StatelessWidget {
-  final ThemeProvider themeProvider;
   final Function(String) onSearch;
   const SearchFieldSearchScreen({
     Key? key,
-    required this.themeProvider,
     required this.onSearch,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Column(
       children: [
         Padding(
